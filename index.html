@@ -1,0 +1,1369 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c0a08">
+<title>Imparidade Media — um retrato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0a08;
+    --bg-card: #15130f;
+    --bg-elev: #1d1b16;
+    --ink: #f4ede0;
+    --ink-dim: #d6cfc1;
+    --muted: #8a857a;
+    --muted-dim: #5a564e;
+    --border: #2a2724;
+    --rule: #4a463f;
+    --accent: #e8542d;
+    --accent-soft: #c66338;
+    --neutral: #f4ede0;
+    --men: #8B5CF6;
+    --women: #10B981;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Numbers are always serif */
+  .num, .num-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
+  }
+  .grid-100 {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows: 10vh;
+    gap: 1px;
+    z-index: 0;
+    will-change: transform;
+  }
+  @media (max-width: 600px) {
+    .grid-100 { grid-template-columns: repeat(5, 1fr); grid-auto-rows: 5vh; }
+  }
+  .cell {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      radial-gradient(ellipse at center, rgba(12,10,8,0.55) 0%, rgba(12,10,8,0.85) 45%, rgba(12,10,8,0.98) 100%),
+      linear-gradient(to bottom, rgba(12,10,8,0.4) 0%, transparent 30%, transparent 70%, rgba(12,10,8,0.95) 100%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    height: 100vh; height: 100svh;
+    padding: 28px 0 32px;
+    justify-content: space-between;
+  }
+  .hero-top { display: flex; justify-content: space-between; align-items: center; }
+  .topmark { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .topmark .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 0.1em; animation: pulse 2.4s infinite ease-in-out; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .topcount { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .topcount .num { font-size: 13px; color: var(--ink); margin-right: 3px; }
+
+  .hero-title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(46px, 14vw, 128px);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin: 0;
+    color: var(--ink);
+  }
+  .hero h1 span { display: block; }
+  .hero h1 .imp { }
+  .hero h1 .media { color: var(--accent); }
+  .hero-tagline {
+    font-size: 15px;
+    color: var(--ink-dim);
+    max-width: 32ch;
+    margin: 28px auto 0;
+    line-height: 1.5;
+  }
+  .hero-tagline em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .hero-bottom { text-align: center; }
+  .hero-bigstat {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(28px, 8vw, 48px);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .hero-bigstat .accent { color: var(--accent); }
+  .hero-bigstat .small { font-family: 'Inter', sans-serif; font-size: 0.38em; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 400; display: block; margin-top: 14px; }
+  .hero-bigstat .small em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; color: var(--ink-dim); }
+  .hero-bigstat .hl-red {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+  .scroll-cue {
+    margin-top: 28px;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    animation: bob 2.4s infinite ease-in-out;
+  }
+  .scroll-cue::after { content: '↓'; display: block; margin-top: 8px; font-size: 14px; color: var(--ink-dim); }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* === GENERAL SECTIONS === */
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  section.data { padding: 72px 0 56px; border-bottom: 1px solid var(--border); position: relative; }
+  section.data:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 28px;
+  }
+  .eyebrow .num-tag { font-family: 'Fraunces', serif; color: var(--accent); font-weight: 400; letter-spacing: 0; font-size: 14px; }
+  .eyebrow .line { flex: 1; height: 1px; background: var(--border); }
+
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; letter-spacing: -0.035em; line-height: 1.0;
+    font-size: clamp(34px, 9vw, 56px);
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+  .section-title em { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; color: var(--muted); letter-spacing: -0.02em; }
+  .section-intro { font-size: 16px; line-height: 1.55; color: var(--ink-dim); margin: 0 0 36px; max-width: 42ch; }
+  .section-intro strong { color: var(--ink); font-weight: 500; }
+
+  /* === 01 - STATS === */
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-card {
+    background: var(--bg-card);
+    padding: 22px 18px 18px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    min-height: 156px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .stat-card .lbl { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .stat-card .num-display {
+    font-size: clamp(40px, 12vw, 64px);
+    line-height: 0.92;
+    color: var(--ink);
+    margin-top: 12px;
+  }
+  .stat-card .num-display .pct { font-size: 0.42em; color: var(--muted); margin-left: 2px; }
+  .stat-card .num-display .sep { font-size: 0.55em; color: var(--muted-dim); margin: 0 4px; vertical-align: 0.05em; }
+  .stat-card .sub { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.4; }
+  .stat-card.alarm { border-color: var(--accent); }
+  .stat-card.alarm .num-display { color: var(--accent); }
+
+  /* === 02 - ABSENCE === */
+  .absence-statement {
+    margin: 24px 0 48px;
+    text-align: left;
+  }
+  .absence-statement .lbl {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    color: var(--muted);
+    font-size: clamp(22px, 5.8vw, 32px); line-height: 1.15; letter-spacing: -0.02em;
+  }
+  .absence-statement .num {
+    font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.06em; line-height: 0.82;
+    font-size: clamp(160px, 50vw, 320px);
+    color: var(--accent);
+    display: block;
+    margin: 4px 0 4px -8px;
+  }
+  .absence-statement .end {
+    font-family: 'Inter', sans-serif; font-weight: 700; color: var(--ink);
+    font-size: clamp(22px, 5.8vw, 32px); line-height: 1.15; letter-spacing: -0.02em;
+  }
+  .absence-statement .end .reg {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; color: var(--muted);
+  }
+  .name-list {
+    list-style: none; padding: 0; margin: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .name-list li {
+    display: grid; grid-template-columns: 32px 1fr auto; gap: 14px; align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .name-list .idx { font-family: 'Fraunces', serif; font-size: 13px; color: var(--muted); font-weight: 400; }
+  .name-list .nm { font-family: 'Inter', sans-serif; font-weight: 500; font-size: clamp(17px, 4.6vw, 22px); letter-spacing: -0.015em; line-height: 1.15; }
+  .name-list .ch { font-size: 10px; color: var(--muted); letter-spacing: 0.16em; text-align: right; font-weight: 600; text-transform: uppercase; }
+  .counter-list {
+    margin: 36px 0 0;
+    padding: 36px 0;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    text-align: center;
+  }
+  .counter-list .heading {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .counter-list .dash {
+    font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+    font-size: clamp(72px, 22vw, 140px); color: var(--ink-dim); line-height: 1;
+  }
+  .counter-list .note { font-size: 12px; color: var(--muted); margin-top: 14px; font-style: italic; font-family: 'Fraunces', serif; }
+
+  /* === VERTICAL BAR CHARTS === */
+  .vbar-chart {
+    margin: 16px 0 8px;
+    padding: 28px 0 0;
+  }
+  .vbar-row {
+    display: flex; align-items: flex-end; justify-content: space-around;
+    gap: 8px;
+    height: 200px;
+    border-bottom: 1px solid var(--rule);
+    padding: 0 4px;
+  }
+  .vbar-group {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    height: 100%; min-width: 0;
+  }
+  .vbar-pair {
+    display: flex; align-items: flex-end; gap: 6px;
+    width: 100%; justify-content: center;
+    height: 100%;
+  }
+  .vbar {
+    flex: 1; max-width: 30px;
+    background: var(--men);
+    position: relative;
+    transition: height 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    min-height: 2px;
+  }
+  .vbar.f { background: var(--women); }
+  .vbar .vnum {
+    position: absolute; bottom: 100%;
+    left: 50%; transform: translateX(-50%);
+    margin-bottom: 6px;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(13px, 3.4vw, 17px);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .vbar.zero { background: transparent; border-bottom: 2px solid var(--accent); min-height: 2px; max-height: 2px; }
+  .vbar.zero .vnum { color: var(--accent); }
+  .vbar-labels {
+    display: flex; justify-content: space-around; gap: 8px;
+    margin-top: 12px;
+    padding: 0 4px;
+  }
+  .vbar-label {
+    flex: 1; text-align: center;
+    font-size: 11px; letter-spacing: 0.06em;
+    color: var(--ink-dim); font-weight: 500;
+    line-height: 1.2;
+    min-width: 0;
+  }
+  .vbar-chart.freq .vbar-row { gap: 4px; }
+  .vbar-chart.freq .vbar-pair { gap: 3px; }
+  .vbar-chart.freq .vbar { max-width: 16px; }
+  .vbar-chart.freq .vbar-label { font-size: 9px; letter-spacing: 0.02em; }
+  .vbar-chart.freq .vbar .vnum { font-size: 11px; }
+
+  .vbar-legend {
+    display: flex; gap: 18px; margin-top: 20px;
+    font-size: 11px; letter-spacing: 0.06em; color: var(--muted); font-weight: 500;
+  }
+  .vbar-legend .sw { display: inline-block; width: 12px; height: 12px; vertical-align: -1px; margin-right: 6px; }
+  .vbar-legend .sw-m { background: var(--men); }
+  .vbar-legend .sw-f { background: var(--women); }
+
+  .chart-note { font-size: 12px; color: var(--muted); margin: 18px 0 0; font-family: 'Fraunces', serif; font-style: italic; line-height: 1.5; }
+
+  /* === STRIP PLOT === */
+  .strip-wrap { margin: 32px 0 0; }
+  .strip {
+    position: relative; height: 220px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(to bottom, rgba(232,84,45,0.025) 0%, transparent 50%);
+    touch-action: manipulation; cursor: pointer;
+  }
+  .dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.15s, height 0.15s; }
+  .dot-m { background: var(--men); opacity: 0.75; }
+  .dot-f { background: var(--women); opacity: 0.82; }
+  .dot.selected { width: 18px; height: 18px; outline: 2px solid var(--ink); outline-offset: 2px; opacity: 1; z-index: 10; }
+  .strip-axis { display: flex; justify-content: space-between; font-family: 'Fraunces', serif; font-size: 11px; color: var(--muted); margin-top: 10px; }
+  .selected-card {
+    margin-top: 20px; padding: 20px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    display: none;
+  }
+  .selected-card.show { display: block; animation: slideUp 0.3s ease; }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .selected-card .sc-name { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.15; margin-bottom: 8px; color: var(--ink); }
+  .selected-card .sc-meta { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+  .selected-card .sc-score { font-family: 'Fraunces', serif; font-weight: 400; font-size: 36px; line-height: 1; letter-spacing: -0.025em; color: var(--accent); }
+  .selected-card .sc-score .lbl { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-left: 8px; font-weight: 600; }
+
+  /* === TOP 10 === */
+  .top10 { margin-top: 36px; }
+  .top10-title { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 16px; }
+  .top10-list { list-style: none; padding: 0; margin: 0; }
+  .top10-list li {
+    display: grid; grid-template-columns: 30px 1fr auto auto; gap: 12px; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .top10-list li:last-child { border-bottom: none; }
+  .top10-list .idx { font-family: 'Fraunces', serif; font-size: 13px; color: var(--muted); }
+  .top10-list .nm { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px; letter-spacing: -0.01em; line-height: 1.2; }
+  .top10-list .gd {
+    font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 2px;
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  .top10-list .gd-m { background: var(--men); color: var(--bg); }
+  .top10-list .gd-f { background: var(--women); color: var(--bg); }
+  .top10-list .sc { font-family: 'Fraunces', serif; font-weight: 400; font-size: 18px; min-width: 44px; text-align: right; color: var(--ink); }
+
+  /* === PEOPLE LIST === */
+  .filters-block { margin: 28px 0 16px; }
+  .filters-block input[type=search] {
+    width: 100%; font-size: 16px; padding: 14px 16px;
+    border: 1px solid var(--border); border-radius: 3px;
+    background: var(--bg-card); color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-appearance: none;
+    min-height: 48px;
+  }
+  .filters-block input[type=search]::placeholder { color: var(--muted); }
+  .filters-block input[type=search]:focus { outline: none; border-color: var(--accent); }
+  .chip-group { margin-top: 14px; }
+  .chip-group-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-family: 'Inter', sans-serif; font-size: 13px; padding: 8px 14px;
+    border-radius: 999px; border: 1px solid var(--border);
+    background: transparent; color: var(--muted); cursor: pointer;
+    min-height: 36px; font-weight: 500;
+    transition: all 0.15s;
+  }
+  .chip:active { transform: scale(0.96); }
+  .chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .sort-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin: 24px 0 16px;
+    padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--border);
+  }
+  .sort-row .count-txt { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .sort-row .count-txt .num { font-family: 'Fraunces', serif; color: var(--ink); font-size: 13px; margin-right: 4px; letter-spacing: 0; }
+  .sort-row select {
+    font-family: 'Inter', sans-serif; font-size: 13px; padding: 7px 10px;
+    background: var(--bg-card); color: var(--ink);
+    border: 1px solid var(--border); border-radius: 2px;
+  }
+
+  .entry-list { list-style: none; padding: 0; margin: 0; }
+  .entry {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 6px 14px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .entry .e-idx { font-family: 'Fraunces', serif; font-size: 13px; color: var(--muted); padding-top: 4px; }
+  .entry .e-name { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 17px; letter-spacing: -0.01em; line-height: 1.2; }
+  .entry .e-score {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
+    letter-spacing: -0.02em; text-align: right; line-height: 1;
+  }
+  .entry .e-meta { grid-column: 2 / 4; font-size: 11px; color: var(--muted); line-height: 1.5; margin-top: 6px; }
+  .entry .e-bar { grid-column: 1 / 4; height: 2px; background: var(--border); margin-top: 12px; position: relative; overflow: hidden; }
+  .entry .e-bar > div { position: absolute; top: 0; left: 0; height: 100%; transition: width 0.4s ease; }
+  .entry .e-bar.m > div { background: var(--men); }
+  .entry .e-bar.f > div { background: var(--women); }
+  .entry.gender-f .e-name::before {
+    content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--women); margin-right: 10px; vertical-align: 0.18em;
+  }
+  .entry.gender-m .e-name::before {
+    content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--men); margin-right: 10px; vertical-align: 0.18em;
+  }
+  .empty {
+    padding: 48px 16px; text-align: center; color: var(--muted);
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 18px;
+  }
+  .load-more {
+    width: 100%; padding: 16px; margin: 24px 0 0;
+    background: transparent; border: 1px solid var(--ink); border-radius: 3px;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink); cursor: pointer; min-height: 52px;
+  }
+  .load-more:active { background: var(--ink); color: var(--bg); }
+
+  /* === FOOTER === */
+  footer { padding: 80px 0 60px; }
+  footer .end-mark { font-family: 'Fraunces', serif; font-style: italic; font-size: 36px; color: var(--muted); }
+  footer .methodology { font-size: 13px; color: var(--ink-dim); margin: 20px 0 28px; max-width: 58ch; line-height: 1.7; }
+  footer .methodology h3 { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin: 24px 0 8px; }
+  footer .methodology h3:first-child { margin-top: 0; }
+  footer .methodology p { margin: 0 0 10px; }
+  footer .methodology ul { margin: 0 0 10px; padding-left: 18px; }
+  footer .methodology li { margin-bottom: 6px; }
+  footer .methodology strong { color: var(--ink-dim); font-weight: 600; }
+  footer .feedback-box { border: 1px solid rgba(232,84,45,0.35); border-radius: 10px; padding: 20px 22px; margin: 0 0 28px; max-width: 52ch; background: rgba(232,84,45,0.05); }
+  footer .feedback-box p { font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0 0 8px; }
+  footer .feedback-box p:last-child { margin-bottom: 0; }
+  footer .feedback-box .fb-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 16px; color: var(--ink); }
+  footer .feedback-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer .feedback-box a:hover { text-decoration: underline; }
+  footer .colophon { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  footer .colophon .num { color: var(--ink); font-size: 12px; letter-spacing: 0; }
+  footer .ai-credit { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; font-family: 'Fraunces', serif; }
+
+  /* Scroll-in reveals */
+  /* reveal animations disabled — content shows immediately */
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+  .cell.img-a { background-image: url(data:image/jpeg;base64,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); background-size: cover; background-position: center; }
+  .cell.img-b { background-image: url(data:image/jpeg;base64,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); background-size: cover; background-position: center; }
+
+  .domingo-block {
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--rule);
+  }
+  .domingo-eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  .domingo-lead {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    color: var(--ink-dim); font-size: clamp(16px, 3.8vw, 20px); line-height: 1.4;
+    margin: 0 0 28px;
+  }
+  .domingo-ratio {
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .domingo-side { display: flex; flex-direction: column; align-items: center; }
+  .domingo-num {
+    font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.04em;
+    font-size: clamp(80px, 22vw, 140px); line-height: 0.9;
+  }
+  .domingo-lbl {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-top: 10px;
+  }
+  .domingo-div {
+    font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+    font-size: clamp(48px, 14vw, 80px); color: var(--muted-dim); line-height: 1;
+  }
+
+  /* OCS widget */
+  /* === ÓRGÃO CAROUSEL (chapter 04) === */
+  .orgao-scroll {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 4px 20px 4px;
+    margin: 0 -4px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) transparent;
+  }
+  .orgao-scroll::-webkit-scrollbar { height: 5px; }
+  .orgao-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+  .orgao-card {
+    flex: 0 0 auto;
+    width: 200px;
+    scroll-snap-align: start;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .orgao-card:hover, .orgao-card.open { border-color: var(--muted-dim); }
+  .orgao-card-meio {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 6px;
+  }
+  .orgao-card-name { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+  .orgao-card-pct { font-family: 'Fraunces', serif; font-size: 30px; line-height: 1; color: var(--women); margin-bottom: 2px; }
+  .orgao-card-pct.zero { color: var(--accent); }
+  .orgao-card-pct .sym { font-size: 16px; }
+  .orgao-card-sub { font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  .orgao-card-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; background: var(--bg-elev); margin-bottom: 10px; }
+  .orgao-card-bar-m { background: var(--men); }
+  .orgao-card-bar-f { background: var(--women); }
+  .orgao-card-count { font-size: 11px; color: var(--muted-dim); }
+  .orgao-card-count .num { color: var(--ink-dim); }
+  .orgao-detail {
+    margin-top: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: none;
+  }
+  .orgao-detail.open { display: block; }
+  .orgao-detail-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+  .orgao-detail-title { font-size: 16px; font-weight: 600; }
+  .orgao-detail-title .meio-tag { font-size: 11px; color: var(--muted); font-weight: 500; margin-left: 8px; }
+  .orgao-detail-pct { font-family: 'Fraunces', serif; font-size: 20px; color: var(--women); }
+  .orgao-detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .orgao-detail-col-lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+  .orgao-detail-col-lbl.m { color: var(--men); }
+  .orgao-detail-col-lbl.f { color: var(--women); }
+  .orgao-detail-names { list-style: none; margin: 0; padding: 0; font-size: 13px; line-height: 1.9; color: var(--ink-dim); }
+  .orgao-no-women { font-size: 13px; color: var(--accent); font-style: italic; }
+  .orgao-scroll-hint { font-size: 11px; color: var(--muted-dim); margin-top: 2px; }
+
+
+  .ocs-widget-eyebrow {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: 20px;
+  }
+  .ocs-filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .ocs-filter-btn {
+    padding: 5px 14px; border: 1px solid var(--border);
+    border-radius: 20px; background: transparent;
+    color: var(--muted); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600;
+    transition: all 0.15s;
+  }
+  .ocs-filter-btn.active {
+    background: var(--bg-elev); color: var(--ink); border-color: var(--rule);
+  }
+  .ocs-sort-row { display: flex; gap: 6px; align-items: center; margin-bottom: 20px; }
+  .ocs-sort-lbl { font-size: 10px; color: var(--muted-dim); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+  .ocs-sort-btn {
+    padding: 3px 10px; border: 1px solid var(--border);
+    border-radius: 4px; background: transparent;
+    color: var(--muted); font-size: 10px; letter-spacing: 0.06em;
+    cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600;
+    text-transform: uppercase;
+  }
+  .ocs-sort-btn.active { color: var(--ink); border-color: var(--rule); background: var(--bg-elev); }
+  .ocs-list { display: flex; flex-direction: column; gap: 2px; }
+  .ocs-row {
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .ocs-row-header {
+    display: grid; grid-template-columns: 24px 1fr auto 56px 52px;
+    gap: 12px; align-items: center; padding: 12px 0;
+  }
+  .ocs-row-idx { font-family: 'Fraunces', serif; font-size: 11px; color: var(--muted); }
+  .ocs-row-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .ocs-row-meio {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; text-align: right;
+  }
+  .ocs-track {
+    height: 6px; background: var(--bg-elev); border-radius: 3px;
+    overflow: hidden; display: flex;
+  }
+  .ocs-bar-m { background: var(--men); height: 100%; }
+  .ocs-bar-f { background: var(--women); height: 100%; }
+  .ocs-pct {
+    font-family: 'Fraunces', serif; font-size: 14px; font-weight: 400;
+    color: var(--ink-dim); text-align: right; min-width: 44px;
+  }
+  .ocs-pct.zero { color: var(--accent); }
+  .ocs-detail {
+    display: none; padding: 0 0 16px 36px;
+  }
+  .ocs-detail.open { display: block; }
+  .ocs-detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+  .ocs-detail-head {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 8px;
+  }
+  .ocs-detail-head.m { color: var(--men); }
+  .ocs-detail-head.f { color: var(--women); }
+  .ocs-detail-head.empty { color: var(--muted-dim); }
+  .ocs-names { list-style: none; padding: 0; margin: 0; }
+  .ocs-names li {
+    font-size: 12px; color: var(--ink-dim); line-height: 1.7;
+    border-bottom: 1px solid var(--border); padding: 2px 0;
+  }
+  .ocs-names li:last-child { border-bottom: none; }
+  .ocs-no-women { font-size: 12px; color: var(--accent); font-style: italic; font-family: 'Fraunces', serif; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="grid-100">
+    <div class="cell img-b" style="filter:brightness(0.55) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.57) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.59) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.61) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.63) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.65) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.67) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.69) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.71) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.73) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.75) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.77) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.79) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.81) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.83) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.85) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.87) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.89) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.56) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.58) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.60) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.62) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.64) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.66) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.68) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.70) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.72) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.74) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.76) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.78) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.80) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.82) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.84) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.86) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.88) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.55) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.57) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.59) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.61) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.63) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.65) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.67) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.69) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.71) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.73) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.75) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.77) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.79) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.81) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.83) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.85) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.87) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.89) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.56) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.58) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.60) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.62) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.64) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.66) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.68) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.70) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.72) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.74) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.76) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.78) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.80) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.82) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.84) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.86) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.88) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.55) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.57) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.59) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.61) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.63) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.65) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.67) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.69) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.71) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.73) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.75) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.77) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.79) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.81) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.83) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.85) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.87) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.89) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.56) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.58) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.60) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.62) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.64) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.66) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.68) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.70) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.72) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.74) saturate(0.85)"></div>
+    <div class="cell img-b" style="filter:brightness(0.76) saturate(0.85)"></div>
+    <div class="cell img-a" style="filter:brightness(0.78) saturate(0.85)"></div>
+  </div>
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-top">
+      <div class="topmark"><span class="dot"></span>Em emissão</div>
+      <div class="topcount"><span class="num">370</span>opinion makers</div>
+    </div>
+
+    <div class="hero-title">
+      <div class="hero-eyebrow">Um retrato · Portugal · 2026</div>
+      <h1>
+        <span class="imp">IMPARIDADE</span>
+        <span class="media">MEDIA</span>
+      </h1>
+      <p class="hero-tagline">
+        Que equidade de género existe nos órgãos de comunicação social em Portugal? <em>Uma base de dados em construção.</em>
+      </p>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-bigstat">
+        <span class="accent">72%</span> <span class="hl-red">homens.</span> 28% mulheres.
+        <span class="small">Análise a 370 <em>opinion makers</em> em TV, Imprensa e Rádio</span>
+      </div>
+      <div class="scroll-cue">Continue</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 01 - O RETRATO -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">01</span><span>O retrato</span><span class="line"></span></div>
+    <h2 class="section-title">Os números <em>do desequilíbrio.</em></h2>
+    <p class="section-intro">
+      Por cada mulher que comenta nos media nacionais, há mais de duas vozes masculinas. Em certos espaços — os mais visíveis, os mais ouvidos — não há nenhuma.
+    </p>
+    <div class="stats-grid" id="stats"></div>
+  </section>
+
+  <!-- 02 - A AUSÊNCIA -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">02</span><span>A ausência</span><span class="line"></span></div>
+    <h2 class="section-title">No horário nobre</h2>
+
+    <div class="absence-statement">
+      <div class="lbl">Jornal em canal generalista</div>
+      <span class="num">0</span>
+      <div class="end">mulheres a comentar <span class="reg">regularmente.</span></div>
+    </div>
+
+    <p class="section-intro" style="margin-bottom:24px">
+      Estes são os cinco homens que ocupam esse espaço — o de maior audiência, o de maior influência, o que define a conversa pública:
+    </p>
+
+    <ol class="name-list">
+      <li><span class="idx">01</span><span class="nm">Nuno Rogeiro</span><span class="ch">SIC / SIC N</span></li>
+      <li><span class="idx">02</span><span class="nm">Paulo Portas</span><span class="ch">TVI</span></li>
+      <li><span class="idx">03</span><span class="nm">José Milhazes</span><span class="ch">SIC / SIC N</span></li>
+      <li><span class="idx">04</span><span class="nm">José Gomes Ferreira</span><span class="ch">SIC / SIC N</span></li>
+      <li><span class="idx">05</span><span class="nm">Miguel Sousa Tavares</span><span class="ch">TVI</span></li>
+    </ol>
+
+    <div class="counter-list">
+      <div class="heading">E as mulheres em primetime são</div>
+      <div class="dash">—</div>
+      <div class="note">Nenhuma entra nesta lista.</div>
+    </div>
+    <div class="domingo-block">
+      <div class="domingo-eyebrow">Ao domingo</div>
+      <p class="domingo-lead">O fim de semana tem o seu próprio padrão. Dos dez comentadores que aparecem regularmente ao domingo,</p>
+      <div class="domingo-ratio">
+        <div class="domingo-side men-side">
+          <span class="domingo-num" style="color:var(--men)">9</span>
+          <span class="domingo-lbl">homens</span>
+        </div>
+        <div class="domingo-div">/</div>
+        <div class="domingo-side women-side">
+          <span class="domingo-num" style="color:var(--women)">1</span>
+          <span class="domingo-lbl">mulher</span>
+        </div>
+      </div>
+      <ol class="name-list" style="margin-top:24px">
+        <li><span class="idx">01</span><span class="nm">Ricardo Araújo Pereira</span><span class="ch" style="color:var(--men)">SIC N</span></li>
+        <li><span class="idx">02</span><span class="nm">Nuno Rogeiro</span><span class="ch" style="color:var(--men)">SIC N</span></li>
+        <li><span class="idx">03</span><span class="nm">Paulo Portas</span><span class="ch" style="color:var(--men)">TVI</span></li>
+        <li><span class="idx">04</span><span class="nm">José Milhazes</span><span class="ch" style="color:var(--men)">SIC N</span></li>
+        <li><span class="idx">05</span><span class="nm">José Pacheco Pereira</span><span class="ch" style="color:var(--men)">CNN</span></li>
+        <li><span class="idx">06</span><span class="nm">Alexandra Leitão</span><span class="ch" style="color:var(--women)">CNN</span></li>
+        <li><span class="idx">07</span><span class="nm">João Cotrim de Figueiredo</span><span class="ch" style="color:var(--men)">SIC N</span></li>
+        <li><span class="idx">08</span><span class="nm">Pedro Braga de Carvalho</span><span class="ch" style="color:var(--men)">RTP N</span></li>
+        <li><span class="idx">09</span><span class="nm">Pedro Duarte</span><span class="ch" style="color:var(--men)">CNN</span></li>
+        <li><span class="idx">10</span><span class="nm">Paulo Sande</span><span class="ch" style="color:var(--men)">RTP N</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 - POR MEIO -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">03</span><span>Por meio</span><span class="line"></span></div>
+    <h2 class="section-title">O que <em>se vê,</em> o que <em>se lê,</em> o que <em>se ouve.</em></h2>
+    <p class="section-intro">
+      A representação muda consoante o sítio. A imprensa é o meio mais equilibrado dos três — embora <strong>"equilibrado"</strong> continue a ser um terço de mulheres.
+    </p>
+    <div class="vbar-chart" id="chart-meio">
+      <div class="vbar-row"></div>
+      <div class="vbar-labels"></div>
+    </div>
+    <div class="vbar-legend">
+      <span><span class="sw sw-m"></span>Homens</span>
+      <span><span class="sw sw-f"></span>Mulheres</span>
+    </div>
+  </section>
+
+  <!-- 04 - POR ÓRGÃO -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">04</span><span>Por órgão</span><span class="line"></span></div>
+    <h2 class="section-title">Nem todos os <em>órgãos</em> pesam o mesmo.</h2>
+    <p class="section-intro">
+      Treze órgãos com pelo menos dez comentadores, do menos ao mais paritário. Toca num cartão para ver os nomes.
+    </p>
+    <div class="orgao-scroll" id="orgao-scroll"></div>
+    <div class="orgao-scroll-hint">Arrasta para o lado para ver mais →</div>
+    <div class="orgao-detail" id="orgao-detail"></div>
+  </section>
+
+  <!-- 04b - POR HORÁRIO -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">05</span><span>Por horário</span><span class="line"></span></div>
+    <h2 class="section-title">Quanto <em>mais cedo,</em> mais elas <em>desaparecem.</em></h2>
+    <p class="section-intro">
+      Na TV, a presença feminina vai-se diluindo à medida que o horário se aproxima do prime time. No espaço de maior audiência, ela é zero.
+    </p>
+    <div class="vbar-chart" id="chart-horario">
+      <div class="vbar-row"></div>
+      <div class="vbar-labels"></div>
+    </div>
+    <p class="chart-note">Apenas comentadores com presença em televisão.</p>
+  </section>
+
+  <!-- 05 - POR FREQUÊNCIA -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">06</span><span>Por frequência</span><span class="line"></span></div>
+    <h2 class="section-title">A paridade <em>só chega</em> a quem aparece <em>poucas vezes.</em></h2>
+    <p class="section-intro">
+      Quanto mais constante é a presença mediática, maior o desequilíbrio. Nos comentadores diários, as mulheres são uma minoria residual. É entre quem participa <strong>pontualmente</strong> — o degrau mais baixo da escala — que a diferença mais se estreita.
+    </p>
+    <div class="vbar-chart freq" id="chart-freq">
+      <div class="vbar-row"></div>
+      <div class="vbar-labels"></div>
+    </div>
+    <p class="chart-note">Frequência máxima registada para cada pessoa em qualquer um dos seus meios.</p>
+  </section>
+
+  <!-- 06 - A ESCALA -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">07</span><span>A escala</span><span class="line"></span></div>
+    <h2 class="section-title">A escala <em>do topo.</em></h2>
+    <p class="section-intro">
+      Cada ponto é uma pessoa. Mais à direita = mais exposição agregada. Toca num ponto para o identificar.
+    </p>
+    <div class="strip-wrap">
+      <div class="strip" id="strip" role="img" aria-label="Distribuição de scores de exposição"></div>
+      <div class="strip-axis" id="strip-axis"></div>
+      <div class="selected-card" id="sel-card" aria-live="polite"></div>
+    </div>
+    <div class="top10">
+      <div class="top10-title">Top 10 — os mais expostos</div>
+      <ol class="top10-list" id="top10"></ol>
+    </div>
+  </section>
+
+  <!-- 07 - AS PESSOAS -->
+  <section class="data reveal">
+    <div class="eyebrow"><span class="num-tag">08</span><span>As pessoas</span><span class="line"></span></div>
+    <h2 class="section-title">Os <em>370.</em></h2>
+    <p class="section-intro">Índice completo. Filtra, ordena, procura.</p>
+
+    <div class="filters-block">
+      <input type="search" id="search" placeholder="Procurar nome ou órgão…" autocomplete="off" autocorrect="off" aria-label="Procurar" />
+      <div class="chip-group">
+        <div class="chip-group-label">Género</div>
+        <div class="chips" id="chips-g">
+          <button class="chip active" data-v="" type="button">Todos</button>
+          <button class="chip" data-v="M" type="button">Homens</button>
+          <button class="chip" data-v="F" type="button">Mulheres</button>
+        </div>
+      </div>
+      <div class="chip-group">
+        <div class="chip-group-label">Meio</div>
+        <div class="chips" id="chips-m">
+          <button class="chip active" data-v="" type="button">Todos</button>
+          <button class="chip" data-v="tv" type="button">TV</button>
+          <button class="chip" data-v="im" type="button">Imprensa</button>
+          <button class="chip" data-v="rd" type="button">Rádio</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sort-row">
+      <span class="count-txt" id="result-count"><span class="num">370</span> resultados</span>
+      <select id="sort" aria-label="Ordenar">
+        <option value="s-desc">Score (maior)</option>
+        <option value="s-asc">Score (menor)</option>
+        <option value="n-asc">Nome A→Z</option>
+        <option value="n-desc">Nome Z→A</option>
+      </select>
+    </div>
+
+    <ol class="entry-list" id="entries"></ol>
+    <button class="load-more" id="load-more" type="button" style="display:none">Mostrar mais</button>
+  </section>
+
+  <footer>
+    <div class="end-mark">Metodologia.</div>
+    <div class="methodology">
+
+      <h3>O que é medido</h3>
+      <p>Este levantamento regista <strong>opinion makers</strong> - comentadores, analistas e colunistas com presença regular em TV, imprensa ou rádio portuguesas. Entram na base de dados pessoas que tenham publicado ou intervindo no espaço mediático pelo menos 3 vezes nos últimos seis meses. Antes de qualquer score, o que importa é a contagem simples: <strong>quantos são homens e quantas são mulheres</strong>. É essa imparidade absoluta - quem tem voz e quem não tem - que este projecto quer mostrar.</p>
+      <p>O score de exposição é secundário. Serve só para dar noção de intensidade dentro desse desequilíbrio. Falar uma vez por mês não é o mesmo que falar duas vezes por semana; comentar ao domingo à noite, em horário nobre, não é o mesmo que comentar a meio da tarde de uma quarta-feira. Captar essa diferença sem reduzir tudo a uma contagem de presenças obrigou a decisões de peso e hierarquia, que são, de longe, o ponto mais discutível desta metodologia. O score ajuda a perceber gradação. Não substitui a contagem de homens e mulheres, que continua a ser o dado central.</p>
+
+      <h3>Como o score é calculado</h3>
+      <p>Para cada meio em que a pessoa aparece, multiplicam-se três fatores: o <strong>peso do canal</strong> (TV generalista=11, TV de cabo=10, imprensa=6, rádio=3, refletindo audiência e alcance aproximados), o <strong>peso do horário</strong> quando aplicável a TV (primetime=5, horário nobre noite=3, horário nobre tarde=2, com bónus de +5 se o programa for de domingo), e o <strong>multiplicador de frequência</strong> (de diária=5 a pontual=0.25). As três componentes - TV, imprensa, rádio - somam-se e o resultado é reescalado para um intervalo de 0 a 20.</p>
+      <p>O valor 20 é um <strong>tecto teórico</strong>. Ninguém o atinge na prática: corresponderia a alguém presente em simultâneo na TV generalista, em primetime de domingo, todos os dias, mais na imprensa todos os dias e na rádio todos os dias. O score mais alto do levantamento é 11,19 - pouco mais de metade desse tecto. Os scores reais ficam concentrados na zona baixa da escala porque a exposição máxima simultânea nos três meios, todos os dias, é um cenário extremo que praticamente não existe.</p>
+      <p>A fórmula é uma simplificação deliberada. Não distingue um comentador com 2 minutos de intervenção de outro com 20 no mesmo programa, nem capta a audiência real de cada slot fora das categorias genéricas usadas aqui. É uma proxy estrutural, não uma medição direta de audiência ou impacto, e deve ser lida assim: indicador de intensidade relativa, não verdade absoluta.</p>
+
+      <h3>Como os dados são recolhidos</h3>
+      <p>Os dados são curados manualmente, com base em observação direta e contínua da grelha dos principais canais de TV, jornais e rádios portugueses. Não existe uma fonte pública estruturada - uma API, um registo da ERC - que liste comentadores fixos por programa. Esta base de dados nasceu de visionamento, leitura e registo manual, o que traz três limitações:</p>
+      <ul>
+        <li><strong>Cobertura incompleta.</strong> Cobrem-se os canais e órgãos com maior audiência, não todos os que existem em Portugal. Comentadores presentes em órgãos regionais, locais, ou plataformas digitais mais pequenas não são contemplados.</li>
+        <li><strong>Desfasamento temporal.</strong> As grelhas mudam - contratos terminam, programas são cancelados, entram novos painelistas. Os dados refletem um retrato aproximado de um período recente, não uma fotografia em tempo real.</li>
+        <li><strong>Erro humano.</strong> Classificar horário, frequência e canal de centenas de pessoas é um processo sujeito a erro de registo, de memória, ou de interpretação dos critérios.</li>
+      </ul>
+
+      <h3>O que não tentamos resolver</h3>
+      <p>Há decisões de classificação que são inevitavelmente discricionárias e que assumimos sem rodeios:</p>
+      <ul>
+        <li>A fronteira entre "comentador fixo" e "convidado frequente" nem sempre é nítida. Usou-se o critério de presença recorrente e identificável, não um contrato formal que não temos como verificar.</li>
+        <li>Os géneros foram atribuídos com base na apresentação pública conhecida de cada pessoa, sem contacto direto para confirmação em todos os casos.</li>
+        <li>Programas de género híbrido - entrevista, humor, talk-show - foram classificados pela componente dominante de comentário de atualidade. Por exemplo, humor e entretenimento foram separados da categoria de telejornal/primetime de opinião política, para não distorcer análises sobre comentário noticioso.</li>
+      </ul>
+
+      <h3>Porque publicamos isto mesmo assim</h3>
+      <p>Nenhum levantamento deste tipo é perfeito, nem este nem qualquer alternativa que dependa de observação humana em vez de dados que as próprias estações não publicam. Mesmo assim, um retrato aproximado e honesto sobre os seus próprios limites é mais útil do que nenhum retrato. A assimetria de género que estes dados revelam é demasiado grande para se explicar por margem de erro de classificação.</p>
+      <p>Esta base de dados está aberta a correções. Encontrou um erro, uma omissão, ou alguém que devia estar aqui e não está? Agradecemos o contacto - ver caixa abaixo.</p>
+
+    </div>
+    <div class="feedback-box">
+      <p class="fb-title">Esta base de dados está viva.</p>
+      <p>Encontrou um erro ou falta alguém na lista? Ajude-nos a tornar este retrato mais exato - escreva para <a href="mailto:imparidademedia@proton.me">imparidademedia@proton.me</a>.</p>
+    </div>
+    <div class="colophon">Imparidade Media · v<span class="num">0.5</span> · <span class="num">2026</span></div>
+    <div class="ai-credit">Este projecto só é possível graças à AI. Desenvolvido em conjunto com Claude.</div>
+  </footer>
+
+</div>
+
+<script>
+const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N","te":"Horário nobre entretenimento","tf":"Bi-semanal","im":"Expresso","if":"Bi-semanal","rd":"","rf":""},{"n":"Nuno Rogeiro","g":"M","s":10.99,"tv":"SIC, SIC N","te":"Primetime","tf":"Bi-semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Paulo Portas","g":"M","s":7.39,"tv":"TVI","te":"Primetime","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Milhazes","g":"M","s":7.06,"tv":"SIC, SIC N","te":"Primetime","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Pacheco Pereira","g":"M","s":5.78,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Alexandra Leitão","g":"F","s":5.78,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"João Cotrim de Figueiredo","g":"M","s":5.38,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Braga de Carvalho","g":"M","s":5.38,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Gomes Ferreira","g":"M","s":5.29,"tv":"SIC, SIC N","te":"Primetime","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Rui Calafate","g":"M","s":4.03,"tv":"CNN","te":"Horário nobre noite","tf":"3x por semana","im":"","if":"","rd":"","rf":""},{"n":"Diana Soller","g":"F","s":4.03,"tv":"CNN","te":"Horário nobre noite","tf":"3x por semana","im":"","if":"","rd":"","rf":""},{"n":"Agostinho Costa","g":"M","s":4.03,"tv":"CNN","te":"Horário nobre noite","tf":"3x por semana","im":"","if":"","rd":"","rf":""},{"n":"Miguel Sousa Tavares","g":"M","s":3.9,"tv":"TVI","te":"Primetime","tf":"Semanal","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Sérgio Sousa Pinto","g":"M","s":3.63,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"Expresso","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Helena Matos","g":"F","s":3.63,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Maria Castello Branco","g":"F","s":3.63,"tv":"RTP N","te":"Horário nobre noite","tf":"Bi-semanal","im":"Expresso","if":"Semanal","rd":"Antena 1","rf":"Semanal"},{"n":"Miguel Morgado","g":"M","s":3.63,"tv":"SIC N","te":"Horário nobre noite","tf":"Bi-semanal","im":"Observador","if":"Bi-semanal","rd":"","rf":""},{"n":"Margarida Davim","g":"F","s":3.63,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"Visão","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Manuel Serrano","g":"M","s":3.43,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"CNN Portugal","if":"Semanal","rd":"","rf":""},{"n":"Daniel Oliveira","g":"M","s":3.13,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Bi-semanal","rd":"TSF","rf":"Diária"},{"n":"Anselmo Crespo","g":"M","s":3.09,"tv":"CNN","te":"Horário nobre tarde","tf":"3x por semana","im":"CNN Portugal","if":"Semanal","rd":"","rf":""},{"n":"Miguel Relvas","g":"M","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Mafalda Anjos","g":"F","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Germano Almeida","g":"M","s":3.03,"tv":"Now","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Azeredo Lopes","g":"M","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Tiago André Lopes","g":"M","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Irineu Teixeira","g":"F","s":3.03,"tv":"Now","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Rui Pereira","g":"M","s":3.03,"tv":"CMTV","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"João Miguel Tavares","g":"M","s":2.82,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Bi-semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Susana Peralta","g":"F","s":2.62,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Pedro Marques Lopes","g":"M","s":2.62,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso, Visão","if":"Bi-semanal","rd":"","rf":""},{"n":"Miguel Santos Carrapatoso","g":"M","s":2.52,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"Observador","if":"Quinzenal","rd":"Rádio Observador","rf":"Bi-semanal"},{"n":"Ricardo Paes Mamede","g":"M","s":2.42,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Clara Ferreira Alves","g":"F","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Luís Pedro Nunes","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Paulo Baldaia","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Pedro Mexia","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Francisco Mendes da Silva","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Bárbara Pedrosa","g":"F","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Henrique Raposo","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Filipe Luís","g":"M","s":2.42,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"Visão","if":"Semanal","rd":"","rf":""},{"n":"Isabel Mendes Lopes","g":"F","s":2.22,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"António Vitorino","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Fernando Medina","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"RR","rf":""},{"n":"Joana Marques Brás","g":"F","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Henrique Pinto de Mesquita","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Brinca","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Bernardo Ferrão","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Santana Lopes","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Isaltino Morais","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Luís Paixão Martins","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Carlos Moedas","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Maria João Marques","g":"F","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"","rd":"","rf":""},{"n":"Mário Centeno","g":"M","s":2.02,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Pinto","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Hugo Carneiro","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"António Mendonça Mendes","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Américo Aguiar","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Delgado Alves","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Eduardo Martins","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Afonso Moura","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Bernardo Valente","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Alberto Cunha","g":"M","s":2.02,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Rui Pedro Antunes","g":"M","s":1.92,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Diária"},{"n":"Teresa Nogueira Pinto","g":"F","s":1.61,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"Expresso","if":"Semanal","rd":"Antena 1","rf":"Semanal"},{"n":"João Maria Jonet","g":"M","s":1.55,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Pedro Adão e Silva","g":"M","s":1.41,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Miguel Poiares Maduro","g":"M","s":1.41,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Pedro Gomes Sanches","g":"M","s":1.41,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Pedro Santos Guerreiro","g":"M","s":1.34,"tv":"CNN","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Cecília Meireles","g":"F","s":1.34,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Prata Roque","g":"M","s":1.34,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Ana Cavalieri","g":"F","s":1.34,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Camilo Lourenço","g":"M","s":1.34,"tv":"CMTV","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Helena Pereira","g":"F","s":1.26,"tv":"RTP N","te":"Horário nobre noite","tf":"Pontual","im":"Público","if":"Diária","rd":"","rf":""},{"n":"Martim Avillez Figueiredo","g":"M","s":1.21,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Ana Augusto-Pedroso","g":"F","s":1.21,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Filipe Vasconcelos Romão","g":"M","s":1.21,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Ana Fontoura Goveia","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rodrigo Moita de Deus","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ana Gabriela Cavilhas","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Alexandre Poço","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Bárbara do Amaral Correia","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Bruno Dias","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Fátima Fonseca","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Francisco César","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Mário Amorim Lopes","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Marina Gonçalves","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Cabrita","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Corte Real","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Patrícia Carvalho","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Patrícia Gonçalves","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ricardo Carvalho","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rodrigo Taxa","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rui Paulo Sousa","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"José Maria Pimentel","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rita Rato","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Francisco Rodrigues dos Santos","g":"M","s":1.01,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Jorge Botelho Moniz","g":"M","s":1.01,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Luís Osório","g":"M","s":1.01,"tv":"","te":"","tf":"","im":"DN","if":"Diária","rd":"","rf":""},{"n":"Paulo Pedroso","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"António Gonçalves Alexandre","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Daniel Pinéu","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rui Cardoso","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Marco Serronha","g":"M","s":1.01,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ana Sá Lopes","g":"F","s":1.01,"tv":"","te":"","tf":"","im":"Público","if":"Diária","rd":"","rf":""},{"n":"Francisco Goiana da Silva","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Filipa Raimundo","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ricardo Jorge Pinto","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Filipe Grilo","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Paulo Sande","g":"M","s":2.69,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Alberto Gonçalves","g":"M","s":0.91,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Diária"},{"n":"Eduardo Sá","g":"M","s":0.91,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Diária"},{"n":"Manuel Carvalho","g":"M","s":0.91,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"José Manuel Fernandes","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"3x por semana"},{"n":"Miguel Pinheiro","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"3x por semana"},{"n":"Leonídio Paulo Ferreira","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"DN","if":"3x por semana","rd":"","rf":""},{"n":"Pedro Sousa Carvalho","g":"M","s":0.81,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"Antena 1","rf":"Bi-semanal"},{"n":"Ricardo Costa","g":"M","s":0.76,"tv":"SIC, SIC N","te":"Horário nobre tarde","tf":"Mensal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Adriana Cardoso","g":"F","s":0.74,"tv":"SIC N","te":"Horário nobre tarde","tf":"Mensal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Helena Garrido","g":"F","s":0.71,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Bi-semanal"},{"n":"Filipe Santos Costa","g":"M","s":0.67,"tv":"CNN","te":"Horário nobre tarde","tf":"Quinzenal","im":"CNN Portugal","if":"","rd":"","rf":""},{"n":"Sónia Sénica","g":"M","s":0.67,"tv":"CNN","te":"Horário nobre tarde","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"João Marques de Almeida","g":"M","s":0.66,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Ascenso Simões","g":"M","s":0.66,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Luís Aguiar-Conraria","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Jaime Nogueira Pinto","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Antena 1","rf":"Semanal"},{"n":"Inês Cardoso","g":"F","s":0.61,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Bruno Cardoso Reis","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Afonso Reis Cabral","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Ângela Silva","g":"F","s":0.55,"tv":"SIC N","te":"Horário nobre noite","tf":"Mensal","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Seixas da Costa","g":"M","s":0.5,"tv":"CNN","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Tadeu","g":"M","s":0.5,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Diária"},{"n":"António José Telo","g":"M","s":0.5,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Nuno Artur Silva","g":"M","s":0.5,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Mariana Vieira da Silva","g":"F","s":0.45,"tv":"Now","te":"Horário nobre noite","tf":"Pontual","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Maria João Avillez","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Paula Caeiro Varela","g":"F","s":0.4,"tv":"SIC N","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"João Pereira Coutinho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Fernanda Câncio","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Jorge Fernandes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Tiago Dores","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Ana Cristina Leonardo","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Rita Bessa","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Stilwell","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"António Barreto","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"António Guerreiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Carmen Garcia","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Francisco Teixeira da Mota","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Frei Bento Domingues O.P.","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Inês Meneses","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Isabel Stilwell","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"José Manuel Meirim","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Pedro Norton","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Luís  Castro Mendes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Francisco George","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Guilherme d’Oliveira Martins","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Aline Hall de Beuvink","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Ana Miguel dos Santos","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"João Oliveira","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Margarida Vaqueiro Lopes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Mariana Leitão","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Rita Garcia Pereira","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Jorge Costa Oliveira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Jorge Silva Carvalho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Bernardo Ivo Cruz","g":"M","s":1.41,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Rute Agulhas","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Raúl M. Braga Pires","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Luís Newton","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Manuel Cardoso","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Rodrigo G. de Carvalho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Isabel Figueiredo","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"João Massano","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Guta Moura Guedes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Eugénia Galvão Teles","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Henrique Burnay","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Henrique Monteiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Leonor Rosas","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Ricardo Dias Felner","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"José Gameiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"João Silvestre","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Lourenço Pereira Coutinho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Luís Marques","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Ricardo Reis","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Rodrigo Saraiva","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Teresa Violante","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Alexandre Borges","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"André Abrantes Amaral","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"José Diogo Quintela","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Margarida Bentes Penedo","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Miguel Tamen","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Nuno Gonçalo Poças","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"P. Gonçalo Portocarrero de Almada","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Patrícia Fernandes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Rodrigo Adão da Fonseca","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"António Tavares","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Capicua","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Felisbela Lopes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Filinto Lima","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Francisco Porto Fernandes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Gomes Fernandes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Helder Pacheco","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Joana Almeida Silva","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Joaquim Cunha","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Joel Neto","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"José Gomes Mendes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Manuel Carvalho da Silva","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Manuel Molinos","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Margarida Rebelo Pinto","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Maria Cândida Almeida","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Maria de Lurdes Rodrigues","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Miguel Guedes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Paula Teles","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Pedro Ivo Carvalho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Rafael Barbosa","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Susana Romana","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Valter Hugo Mãe","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Amilcar Correia","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"José Pedro Teixeira Fernandes","g":"M","s":0.37,"tv":"RTP N","te":"Horário nobre tarde","tf":"Pontual","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Gonçalo Ribeiro Telles","g":"M","s":0.34,"tv":"CNN","te":"Horário nobre tarde","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Luís Rosa","g":"M","s":0.3,"tv":"","te":"","tf":"","im":"Observador","if":"Mensal","rd":"Rádio Observador","rf":"Semanal"},{"n":"André Coelho Lima","g":"M","s":0.25,"tv":"Now","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Marcos Farias Ferreira","g":"M","s":0.25,"tv":"RTP N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Liliana Valente","g":"F","s":0.25,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Ricardo Arroja","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Vítor Santos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"André Barata","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Carla Castro","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"João da Silva","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Luísa Semedo","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Manuel Loff","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Pedro Bastos Reis","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"André Franqueira Rodrigues","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Diogo Noivo","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Ana Miguel Pedro","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"António Carlos Cortez","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Rui Frias","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Sofia Santos","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Ana Rita Gil","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"António Jaime Martins","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Carlos Ferro","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Filipe Alves","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"DN","if":"Bi-semanal","rd":"","rf":""},{"n":"Filipe Froes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Inês Ferreira Leite","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"João Almeida Moreira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"João Caupers","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"José Crespo de Carvalho","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"DN","if":"Pontual","rd":"","rf":""},{"n":"Luís Parreirão","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Luís Vidigal","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Maria Manuel Leitão Marques","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"DN","if":"Pontual","rd":"","rf":""},{"n":"Miguel Romão","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Nuno Piteira Lopes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Nuno Vinha","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Paulo Guinote","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Ricardo Simões Ferreira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"José Manuel Maia","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Jorge Mangorrinha","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ivone Patrão","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Wang Suoying","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Bruno Valverde Cota","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Vitor Matos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Luís Cabral","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Rodrigo Tavares","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Sebastião Bugalho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Carlos Maria Bobone","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"","rf":""},{"n":"Mafalda Pratas","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"","rf":""},{"n":"Paulo Trigo Pereira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"","rf":""},{"n":"José A. Rio Fernandes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Luís Pedro Carvalho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Mariana Roque Caetano","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Nuno Botelho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Pedro Araújo","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Rogério Macedo Oliveira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Rui Lage","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Rui Sá","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Sérgio Humberto","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"André Silva","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"António José Teixeira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Carlos Coelho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Francisco Merino","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Francisco Paupério","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"João Teixeira Lopes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Kenia Nunes","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Luísa Meireles","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Marisa Matias","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Miguel Tiago","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Paula Teixeira da Cruz","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Álvaro Costa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Nuno Magalhães","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Tiago Brandão Rodrigues","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Miguel Carvalho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Joana Bértholo","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Pedro Levi Bismarck","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"David Erlich","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"José Pedro Silva","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Maria Escaja","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"José Ribeiro e Castro","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"João Soares","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Pedro Mota Soares","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Ribau Esteves","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Inês de Medeiros","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Angélique da Teresa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Bernardo Pessanha","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"José Manuel Pureza","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Teresa Leal Coelho","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Lídia Pereira","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Manuel Monteiro","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Paula Marques","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"TSF","rf":"Semanal"},{"n":"Nuno Garoupa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Semanal"},{"n":"Rui Ramos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Semanal"},{"n":"Gonçalo Sousa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Semanal"},{"n":"Pedro Frazão","g":"M","s":0.17,"tv":"CNN","te":"Horário nobre tarde","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Arlindo Oliveira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Giovanna Tavares","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Pedro Carvalho","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Tiago Correia","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Ubiratan Muarrek","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Pedro Sequeira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ana Jacinto","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ana Abrunhosa","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Rita Alves Feio","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Domingos Caeiro","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Luís Mira Amaral","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Luís Todo Bom","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Luísa Schmidt","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Maria Manuel Mota","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Alfredo Pereira da Cruz","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"António Sousa Pereira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Carlos Carvalho","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Emídio Gomes","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Fontainhas Fernandes","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"José Ribau Esteves","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Luísa Salgueiro","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Luís Nobre","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Mário Passos","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Paulo Jorge Ferreira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Paulo Pereira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Ricardo Araújo","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Rui Amaral","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Alexandra Lucas Coelho","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"Antônio Grassi","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"Elizabeth Accioly","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"Ionara Silva","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"José Soeiro","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Carla Joana Silva","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"JN","if":"Pontual","rd":"","rf":""},{"n":"Fernando Calado Rodrigues","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"JN","if":"Pontual","rd":"","rf":""},{"n":"Maria Inês Padrão","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"JN","if":"Pontual","rd":"","rf":""},{"n":"Duarte Afonso Silva","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Mensal"},{"n":"José Luís Ramos Pinheiro","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Mensal"},{"n":"Pedro Vaz Patto","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Mensal"},{"n":"Paulo Saragoça da Mata","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Mensal"},{"n":"Hugo Carvalho Gonçalves","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Alfredo Teixeira","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Francisco Sarsfield Cabral","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"João Pedro Tavares","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Luís Caeiro","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Pedro Celeste","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Rute Xavier","g":"F","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Tânia Sousa","g":"F","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Nuno Severiano Teixeira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Pedro Duarte","g":"M","s":5.38,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"João Vieira Borges","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Joana Amaral Dias","g":"F","s":0.5,"tv":"Now","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Raquel Vaz Pinto","g":"F","s":0.5,"tv":"SIC N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Rita Matias","g":"F","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Bruno Gonçalves","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"João Nuno Assunção","g":"M","s":0.25,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Lígia Franco","g":"F","s":0.5,"tv":"SIC N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Helena Ferro Gouveia","g":"F","s":1.01,"tv":"CMTV","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Daniela Melo","g":"F","s":0.5,"tv":"CNN","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""}];
+
+(function() {
+  try {
+  const $ = (id) => document.getElementById(id);
+  const PAGE_SIZE = 30;
+  let visibleCount = PAGE_SIZE;
+
+  // === STATS ===
+  const tot = DATA.length;
+  const m = DATA.filter(d => d.g === 'M').length;
+  const f = tot - m;
+  const top10sorted = [...DATA].sort((a,b) => b.s - a.s).slice(0, 10);
+  const top10F = top10sorted.filter(d => d.g === 'F').length;
+
+  $('stats').innerHTML = [
+    { lbl: 'Opinion makers ativos', num: '<span class="num-display">' + tot + '</span>', sub: m + ' homens · ' + f + ' mulheres' },
+    { lbl: 'Rácio H / M', num: '<span class="num-display">' + (m/f).toFixed(1) + '<span class="pct">×</span></span>', sub: 'mais homens do que mulheres' },
+    { lbl: 'Primetime de TV', num: '<span class="num-display">0</span>', sub: 'mulheres em horário nobre', alarm: true },
+    { lbl: 'Top 10 do score', num: '<span class="num-display">' + (10-top10F) + '<span class="sep">/</span>' + top10F + '</span>', sub: 'homens / mulheres no topo' },
+  ].map(k => '<div class="stat-card' + (k.alarm ? ' alarm' : '') + '"><div class="lbl">' + k.lbl + '</div>' + k.num + '<div class="sub">' + k.sub + '</div></div>').join('');
+
+  // === Vertical bar chart helper ===
+  function renderVBar(rootId, cats) {
+    const root = $(rootId);
+    const row = root.querySelector('.vbar-row');
+    const labels = root.querySelector('.vbar-labels');
+    const max = Math.max(...cats.flatMap(c => [c.m, c.f]));
+    row.innerHTML = cats.map(c => {
+      const hM = max > 0 ? (c.m / max) * 100 : 0;
+      const hF = max > 0 ? (c.f / max) * 100 : 0;
+      const fCls = c.f === 0 ? 'vbar f zero' : 'vbar f';
+      const mCls = c.m === 0 ? 'vbar m zero' : 'vbar m';
+      return '<div class="vbar-group"><div class="vbar-pair">' +
+        '<div class="' + mCls + '" style="height:' + hM + '%"><span class="vnum">' + c.m + '</span></div>' +
+        '<div class="' + fCls + '" style="height:' + hF + '%"><span class="vnum">' + c.f + '</span></div>' +
+      '</div></div>';
+    }).join('');
+    labels.innerHTML = cats.map(c => '<div class="vbar-label">' + c.label + '</div>').join('');
+  }
+
+  // === 03 Por meio ===
+  renderVBar('chart-meio', [
+    { label: 'Televisão', m: DATA.filter(d => d.g==='M' && d.tv).length, f: DATA.filter(d => d.g==='F' && d.tv).length },
+    { label: 'Imprensa',  m: DATA.filter(d => d.g==='M' && d.im).length, f: DATA.filter(d => d.g==='F' && d.im).length },
+    { label: 'Rádio',     m: DATA.filter(d => d.g==='M' && d.rd).length, f: DATA.filter(d => d.g==='F' && d.rd).length },
+  ]);
+
+  // === 04 Por horário (TV only) ===
+  renderVBar('chart-horario', [
+    { label: 'Tarde',     m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre tarde').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre tarde').length },
+    { label: 'Noite',     m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre noite').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre noite').length },
+    { label: 'Primetime', m: DATA.filter(d => d.g==='M' && d.te==='Primetime').length, f: DATA.filter(d => d.g==='F' && d.te==='Primetime').length },
+  ]);
+
+  // === 05 Por frequência (max across media) ===
+  const FREQ_RANK = ['Diária','3x por semana','Bi-semanal','Semanal','Quinzenal','Mensal','Pontual'];
+  const FREQ_LBL = ['Diária','3×/sem','Bi-sem.','Semanal','Quinzenal','Mensal','Pontual'];
+  function maxFreq(d) {
+    const fs = [d.tf, d["if"], d.rf];
+    for (const f of FREQ_RANK) if (fs.includes(f)) return f;
+    return null;
+  }
+  renderVBar('chart-freq', FREQ_RANK.map((f, i) => ({
+    label: FREQ_LBL[i],
+    m: DATA.filter(d => d.g==='M' && maxFreq(d) === f).length,
+    f: DATA.filter(d => d.g==='F' && maxFreq(d) === f).length,
+  })));
+
+  // === 06 Strip plot ===
+  const strip = $('strip');
+  const stripAxis = $('strip-axis');
+  const selCard = $('sel-card');
+  const maxScore = Math.max(...DATA.map(d => d.s));
+  const maxX = Math.ceil(maxScore);
+  const sq = v => Math.sqrt(v);
+  const sqMax = sq(maxX);
+
+  strip.innerHTML = DATA.map((d, i) => {
+    const xPct = (sq(d.s) / sqMax) * 94 + 3;
+    const seed = (d.n.charCodeAt(0) * 37 + d.n.charCodeAt(d.n.length-1) * 7) % 100;
+    const yPct = 12 + (seed / 100) * 72;
+    return '<div class="dot dot-' + d.g.toLowerCase() + '" data-idx="' + i + '" style="left:' + xPct + '%;top:' + yPct + '%"></div>';
+  }).join('');
+  stripAxis.innerHTML = [0, 1, 2, 4, 6, maxX].map(t => '<span>' + t + '</span>').join('');
+
+  function meiosLabel(d) {
+    const parts = [];
+    if (d.tv) parts.push('TV: ' + d.tv + (d.te ? ' · ' + d.te : '') + (d.tf ? ' · ' + d.tf : ''));
+    if (d.im) parts.push('Imprensa: ' + d.im + (d["if"] ? ' · ' + d["if"] : ''));
+    if (d.rd) parts.push('Rádio: ' + d.rd + (d.rf ? ' · ' + d.rf : ''));
+    return parts.join('  ·  ');
+  }
+
+  strip.addEventListener('click', (e) => {
+    const dot = e.target.closest('.dot');
+    document.querySelectorAll('.dot.selected').forEach(d => d.classList.remove('selected'));
+    if (dot) {
+      dot.classList.add('selected');
+      const d = DATA[parseInt(dot.dataset.idx, 10)];
+      selCard.innerHTML = '<div class="sc-name">' + d.n + '</div><div class="sc-meta">' + (meiosLabel(d) || 'Sem meios registados') + '</div><div class="sc-score">' + d.s.toFixed(2) + '<span class="lbl">Score</span></div>';
+      selCard.classList.add('show');
+    } else {
+      selCard.classList.remove('show');
+    }
+  });
+
+  // === Top 10 ===
+  $('top10').innerHTML = top10sorted.map((d, i) => {
+    return '<li><span class="idx">' + String(i+1).padStart(2,'0') + '</span><span class="nm">' + d.n + '</span><span class="gd gd-' + d.g.toLowerCase() + '">' + (d.g === 'M' ? 'H' : 'M') + '</span><span class="sc">' + d.s.toFixed(2) + '</span></li>';
+  }).join('');
+
+  // === Filters & people list ===
+  let fG = '', fM = '', fS = '', fSort = 's-desc';
+  function bindChips(rootId, setter) {
+    $(rootId).addEventListener('click', (e) => {
+      const c = e.target.closest('.chip');
+      if (!c) return;
+      $(rootId).querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      setter(c.dataset.v);
+      visibleCount = PAGE_SIZE;
+      render();
+    });
+  }
+  bindChips('chips-g', v => fG = v);
+  bindChips('chips-m', v => fM = v);
+
+  const searchEl = $('search');
+  searchEl.addEventListener('input', () => { fS = searchEl.value.toLowerCase().trim(); visibleCount = PAGE_SIZE; render(); });
+  $('sort').addEventListener('change', (e) => { fSort = e.target.value; render(); });
+
+  const entries = $('entries');
+  const loadMore = $('load-more');
+  loadMore.addEventListener('click', () => { visibleCount += PAGE_SIZE; render(); });
+
+  function filtered() {
+    return DATA.filter(d => {
+      if (fG && d.g !== fG) return false;
+      if (fM === 'tv' && !d.tv) return false;
+      if (fM === 'im' && !d.im) return false;
+      if (fM === 'rd' && !d.rd) return false;
+      if (fS) {
+        const blob = (d.n + ' ' + d.tv + ' ' + d.im + ' ' + d.rd).toLowerCase();
+        if (!blob.includes(fS)) return false;
+      }
+      return true;
+    });
+  }
+  function sortRows(rows) {
+    const [key, dir] = fSort.split('-');
+    const mul = dir === 'asc' ? 1 : -1;
+    return rows.sort((a, b) => {
+      if (key === 'n') return a.n.localeCompare(b.n) * mul;
+      return (a.s - b.s) * mul;
+    });
+  }
+  const maxS = Math.max(...DATA.map(d => d.s));
+
+  function render() {
+    const rows = sortRows(filtered());
+    const slice = rows.slice(0, visibleCount);
+    $('result-count').innerHTML = '<span class="num">' + rows.length + '</span>resultado' + (rows.length === 1 ? '' : 's');
+    if (rows.length === 0) {
+      entries.innerHTML = '<li class="empty">Nenhum resultado para esta combinação.</li>';
+      loadMore.style.display = 'none';
+      return;
+    }
+    entries.innerHTML = slice.map((d, i) => {
+      const fillW = Math.max(2, (d.s / maxS) * 100);
+      const mL = meiosLabel(d);
+      return '<li class="entry gender-' + d.g.toLowerCase() + '">' +
+        '<span class="e-idx">' + String(i+1).padStart(3,'0') + '</span>' +
+        '<span class="e-name">' + d.n + '</span>' +
+        '<span class="e-score">' + d.s.toFixed(2) + '</span>' +
+        '<span class="e-meta">' + (mL || 'Sem meios registados') + '</span>' +
+        '<div class="e-bar ' + d.g.toLowerCase() + '"><div style="width:' + fillW + '%"></div></div>' +
+      '</li>';
+    }).join('');
+    if (slice.length < rows.length) {
+      loadMore.style.display = 'block';
+      loadMore.textContent = 'Mostrar mais (' + (rows.length - slice.length) + ' restantes)';
+    } else {
+      loadMore.style.display = 'none';
+    }
+  }
+  render();
+
+  // (Reveal animations disabled)
+  } catch (err) {
+    console.error('Imparidade Media error:', err);
+    const errDiv = document.createElement('div');
+    errDiv.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#e8542d;color:#fff;padding:14px 16px;font-family:monospace;font-size:12px;z-index:9999;line-height:1.4';
+    errDiv.textContent = 'JS error: ' + (err && err.message ? err.message : String(err));
+    document.body.appendChild(errDiv);
+  }
+})();
+
+  // === OCS WIDGET ===
+  (function() {
+    window.OCS_DATA = [{"ocs":"SIC","meio":"TV","total":5,"n_m":5,"n_f":0,"pct_f":0.0,"names_m":["José Gomes Ferreira","José Milhazes","Nuno Rogeiro","Ricardo Araújo Pereira","Ricardo Costa"],"names_f":[]},{"ocs":"SIC N","meio":"TV","total":42,"n_m":30,"n_f":12,"pct_f":28.6,"names_m":["António Gonçalves Alexandre","António Vitorino","Ascenso Simões","Bernardo Ferrão","Daniel Oliveira","Daniel Pinéu","Francisco Goiana da Silva","Francisco Mendes da Silva","Henrique Raposo","José Eduardo Martins","José Gomes Ferreira","José Milhazes","João Cotrim de Figueiredo","João Maria Jonet","João Marques de Almeida","João Miguel Tavares","João Nuno Assunção","Luís Pedro Nunes","Miguel Morgado","Miguel Prata Roque","Nuno Rogeiro","Paulo Baldaia","Pedro Delgado Alves","Pedro Gomes Sanches","Pedro Marques Lopes","Pedro Mexia","Ricardo Araújo Pereira","Ricardo Costa","Rui Cardoso","Rui Pedro Antunes"],"names_f":["Adriana Cardoso","Ana Bárbara Pedrosa","Ana Cavalieri","Cecília Meireles","Clara Ferreira Alves","Liliana Valente","Lígia Franco","Maria João Marques","Paula Caeiro Varela","Raquel Vaz Pinto","Teresa Nogueira Pinto","Ângela Silva"]},{"ocs":"Expresso","meio":"Imprensa","total":52,"n_m":37,"n_f":15,"pct_f":28.8,"names_m":["Alfredo Pereira da Cruz","Ascenso Simões","Daniel Oliveira","Domingos Caeiro","Henrique Burnay","Henrique Monteiro","Henrique Raposo","Hugo Carvalho Gonçalves","José Gameiro","José Soeiro","João Massano","João Silvestre","Lourenço Pereira Coutinho","Luís Aguiar-Conraria","Luís Cabral","Luís Marques","Luís Mira Amaral","Luís Pedro Nunes","Luís Todo Bom","Manuel Cardoso","Miguel Poiares Maduro","Miguel Sousa Tavares","Nuno Rogeiro","Paulo Baldaia","Pedro Gomes Sanches","Pedro Marques Lopes","Pedro Mexia","Ricardo Araújo Pereira","Ricardo Costa","Ricardo Dias Felner","Ricardo Reis","Rodrigo G. de Carvalho","Rodrigo Saraiva","Rodrigo Tavares","Sebastião Bugalho","Sérgio Sousa Pinto","Vitor Matos"],"names_f":["Adriana Cardoso","Ana Bárbara Pedrosa","Clara Ferreira Alves","Eugénia Galvão Teles","Guta Moura Guedes","Isabel Figueiredo","Leonor Rosas","Luísa Schmidt","Maria Castello Branco","Maria Manuel Mota","Mariana Vieira da Silva","Paula Caeiro Varela","Teresa Nogueira Pinto","Teresa Violante","Ângela Silva"]},{"ocs":"TVI","meio":"TV","total":2,"n_m":2,"n_f":0,"pct_f":0.0,"names_m":["Miguel Sousa Tavares","Paulo Portas"],"names_f":[]},{"ocs":"CNN","meio":"TV","total":29,"n_m":23,"n_f":6,"pct_f":20.7,"names_m":["Agostinho Costa","Alberto Cunha","Anselmo Crespo","Azeredo Lopes","Filipe Santos Costa","Francisco Rodrigues dos Santos","Gonçalo Ribeiro Telles","Jorge Botelho Moniz","José Pacheco Pereira","Manuel Serrano","Marco Serronha","Miguel Relvas","Miguel Santos Carrapatoso","Mário Centeno","Pedro Adão e Silva","Pedro Duarte","Pedro Frazão","Pedro Santos Guerreiro","Rui Calafate","Seixas da Costa","Sérgio Sousa Pinto","Sónia Sénica","Tiago André Lopes"],"names_f":["Alexandra Leitão","Daniela Melo","Diana Soller","Helena Matos","Mafalda Anjos","Margarida Davim"]},{"ocs":"Público","meio":"Imprensa","total":42,"n_m":26,"n_f":16,"pct_f":38.1,"names_m":["Amilcar Correia","André Barata","António Barreto","António Guerreiro","Antônio Grassi","Arlindo Oliveira","Francisco Mendes da Silva","Francisco Teixeira da Mota","Frei Bento Domingues O.P.","José Manuel Meirim","José Pacheco Pereira","José Pedro Teixeira Fernandes","João Miguel Tavares","João da Silva","Manuel Carvalho","Manuel Loff","Martim Avillez Figueiredo","Nuno Severiano Teixeira","Pedro Adão e Silva","Pedro Bastos Reis","Pedro Carvalho","Pedro Norton","Ricardo Arroja","Ricardo Paes Mamede","Tiago Correia","Ubiratan Muarrek"],"names_f":["Alexandra Lucas Coelho","Ana Cristina Leonardo","Ana Rita Bessa","Ana Stilwell","Ana Sá Lopes","Carla Castro","Carmen Garcia","Elizabeth Accioly","Giovanna Tavares","Helena Pereira","Inês Meneses","Ionara Silva","Isabel Stilwell","Luísa Semedo","Maria João Marques","Susana Peralta"]},{"ocs":"RTP N","meio":"TV","total":49,"n_m":34,"n_f":15,"pct_f":30.6,"names_m":["Alexandre Poço","António José Telo","António Mendonça Mendes","Bernardo Ivo Cruz","Bruno Dias","Filipe Grilo","Filipe Luís","Filipe Vasconcelos Romão","Francisco César","Henrique Pinto de Mesquita","Hugo Carneiro","José Maria Pimentel","José Pedro Teixeira Fernandes","João Vieira Borges","Manuel Carvalho","Marcos Farias Ferreira","Martim Avillez Figueiredo","Miguel Cabrita","Miguel Corte Real","Miguel Poiares Maduro","Mário Amorim Lopes","Nuno Artur Silva","Paulo Pedroso","Paulo Sande","Pedro Braga de Carvalho","Pedro Brinca","Pedro Pinto","Pedro Sousa Carvalho","Ricardo Carvalho","Ricardo Jorge Pinto","Ricardo Paes Mamede","Rodrigo Moita de Deus","Rodrigo Taxa","Rui Paulo Sousa"],"names_f":["Ana Augusto-Pedroso","Ana Fontoura Goveia","Ana Gabriela Cavilhas","Bárbara do Amaral Correia","Filipa Raimundo","Fátima Fonseca","Helena Pereira","Isabel Mendes Lopes","Joana Marques Brás","Maria Castello Branco","Marina Gonçalves","Patrícia Carvalho","Patrícia Gonçalves","Rita Rato","Susana Peralta"]},{"ocs":"Rádio Observador","meio":"Rádio","total":19,"n_m":16,"n_f":3,"pct_f":15.8,"names_m":["Alberto Gonçalves","Bruno Cardoso Reis","Eduardo Sá","Gonçalo Sousa","Jorge Fernandes","José Manuel Fernandes","João Miguel Tavares","Luís Aguiar-Conraria","Luís Rosa","Miguel Pinheiro","Miguel Santos Carrapatoso","Nuno Garoupa","Paulo Saragoça da Mata","Rui Pedro Antunes","Rui Ramos","Sérgio Sousa Pinto"],"names_f":["Helena Garrido","Helena Matos","Susana Peralta"]},{"ocs":"Observador","meio":"Imprensa","total":28,"n_m":22,"n_f":6,"pct_f":21.4,"names_m":["Alberto Gonçalves","Alexandre Borges","André Abrantes Amaral","Bruno Cardoso Reis","Carlos Maria Bobone","Eduardo Sá","Jaime Nogueira Pinto","Jorge Fernandes","José Diogo Quintela","José Manuel Fernandes","João Marques de Almeida","Luís Rosa","Miguel Morgado","Miguel Pinheiro","Miguel Santos Carrapatoso","Miguel Tamen","Nuno Gonçalo Poças","P. Gonçalo Portocarrero de Almada","Paulo Trigo Pereira","Rodrigo Adão da Fonseca","Rui Pedro Antunes","Tiago Dores"],"names_f":["Helena Garrido","Helena Matos","Mafalda Pratas","Margarida Bentes Penedo","Maria João Avillez","Patrícia Fernandes"]},{"ocs":"Antena 1","meio":"Rádio","total":24,"n_m":16,"n_f":8,"pct_f":33.3,"names_m":["André Silva","António José Teixeira","Carlos Coelho","David Erlich","Filipe Vasconcelos Romão","Francisco Merino","Francisco Paupério","Jaime Nogueira Pinto","João Teixeira Lopes","Miguel Tiago","Nuno Magalhães","Pedro Levi Bismarck","Pedro Sousa Carvalho","Pedro Tadeu","Tiago Brandão Rodrigues","Álvaro Costa"],"names_f":["Ana Augusto-Pedroso","Joana Bértholo","Kenia Nunes","Luísa Meireles","Maria Castello Branco","Marisa Matias","Paula Teixeira da Cruz","Teresa Nogueira Pinto"]},{"ocs":"Visão","meio":"Imprensa","total":3,"n_m":2,"n_f":1,"pct_f":33.3,"names_m":["Filipe Luís","Pedro Marques Lopes"],"names_f":["Margarida Davim"]},{"ocs":"TSF","meio":"Rádio","total":22,"n_m":15,"n_f":7,"pct_f":31.8,"names_m":["Afonso Reis Cabral","Angélique da Teresa","Bernardo Pessanha","Daniel Oliveira","José Manuel Pureza","José Pedro Silva","José Ribeiro e Castro","João Maria Jonet","João Oliveira","João Soares","Manuel Monteiro","Miguel Carvalho","Pedro Mota Soares","Ribau Esteves","Vítor Santos"],"names_f":["Inês Cardoso","Inês de Medeiros","Lídia Pereira","Margarida Davim","Maria Escaja","Paula Marques","Teresa Leal Coelho"]},{"ocs":"CNN Portugal","meio":"Imprensa","total":3,"n_m":3,"n_f":0,"pct_f":0.0,"names_m":["Anselmo Crespo","Filipe Santos Costa","Manuel Serrano"],"names_f":[]},{"ocs":"Now","meio":"TV","total":15,"n_m":11,"n_f":4,"pct_f":26.7,"names_m":["Afonso Moura","Américo Aguiar","André Coelho Lima","Bernardo Valente","Bruno Gonçalves","Carlos Moedas","Fernando Medina","Germano Almeida","Isaltino Morais","Luís Paixão Martins","Santana Lopes"],"names_f":["Irineu Teixeira","Joana Amaral Dias","Mariana Vieira da Silva","Rita Matias"]},{"ocs":"CMTV","meio":"TV","total":3,"n_m":2,"n_f":1,"pct_f":33.3,"names_m":["Camilo Lourenço","Rui Pereira"],"names_f":["Helena Ferro Gouveia"]},{"ocs":"DN","meio":"Imprensa","total":53,"n_m":33,"n_f":20,"pct_f":37.7,"names_m":["André Franqueira Rodrigues","António Carlos Cortez","António Jaime Martins","Bernardo Ivo Cruz","Bruno Valverde Cota","Carlos Ferro","Diogo Noivo","Filipe Alves","Filipe Froes","Francisco George","Guilherme d’Oliveira Martins","Jorge Costa Oliveira","Jorge Mangorrinha","Jorge Silva Carvalho","José Crespo de Carvalho","José Manuel Maia","João Almeida Moreira","João Caupers","João Oliveira","Leonídio Paulo Ferreira","Luís  Castro Mendes","Luís Newton","Luís Osório","Luís Parreirão","Luís Vidigal","Miguel Romão","Nuno Piteira Lopes","Nuno Vinha","Paulo Guinote","Pedro Sequeira","Raúl M. Braga Pires","Ricardo Simões Ferreira","Rui Frias"],"names_f":["Alexandra Leitão","Aline Hall de Beuvink","Ana Abrunhosa","Ana Jacinto","Ana Miguel Pedro","Ana Miguel dos Santos","Ana Rita Gil","Fernanda Câncio","Inês Ferreira Leite","Isabel Mendes Lopes","Ivone Patrão","Margarida Vaqueiro Lopes","Maria Manuel Leitão Marques","Mariana Leitão","Paula Marques","Rita Alves Feio","Rita Garcia Pereira","Rute Agulhas","Sofia Santos","Wang Suoying"]},{"ocs":"RR","meio":"Rádio","total":11,"n_m":9,"n_f":2,"pct_f":18.2,"names_m":["Alfredo Teixeira","Duarte Afonso Silva","Fernando Medina","Francisco Sarsfield Cabral","José Luís Ramos Pinheiro","João Pedro Tavares","Luís Caeiro","Pedro Celeste","Pedro Vaz Patto"],"names_f":["Rute Xavier","Tânia Sousa"]},{"ocs":"JN","meio":"Imprensa","total":48,"n_m":35,"n_f":13,"pct_f":27.1,"names_m":["Afonso Reis Cabral","António Sousa Pereira","António Tavares","Carlos Carvalho","Emídio Gomes","Fernando Calado Rodrigues","Filinto Lima","Fontainhas Fernandes","Francisco Porto Fernandes","Gomes Fernandes","Helder Pacheco","Joaquim Cunha","Joel Neto","José A. Rio Fernandes","José Gomes Mendes","José Ribau Esteves","Luís Nobre","Luís Pedro Carvalho","Manuel Carvalho da Silva","Manuel Molinos","Miguel Guedes","Mário Passos","Nuno Botelho","Paulo Jorge Ferreira","Paulo Pereira","Pedro Araújo","Pedro Ivo Carvalho","Rafael Barbosa","Ricardo Araújo","Rogério Macedo Oliveira","Rui Amaral","Rui Lage","Rui Sá","Sérgio Humberto","Valter Hugo Mãe"],"names_f":["Capicua","Carla Joana Silva","Felisbela Lopes","Inês Cardoso","Joana Almeida Silva","Luísa Salgueiro","Margarida Rebelo Pinto","Maria Cândida Almeida","Maria Inês Padrão","Maria de Lurdes Rodrigues","Mariana Roque Caetano","Paula Teles","Susana Romana"]},{"ocs":"CM","meio":"Imprensa","total":1,"n_m":1,"n_f":0,"pct_f":0.0,"names_m":["João Pereira Coutinho"],"names_f":[]}];
+    var OCS = window.OCS_DATA;
+    var activeMeio = 'todos';
+    var activeSort = 'pct';
+    var expandedKey = null;
+
+    function filtered() {
+      var d = activeMeio === 'todos' ? OCS.slice() : OCS.filter(function(x){ return x.meio === activeMeio; });
+      if (activeSort === 'pct') d.sort(function(a,b){ return b.pct_f - a.pct_f; });
+      else if (activeSort === 'total') d.sort(function(a,b){ return b.total - a.total; });
+      else d.sort(function(a,b){ return a.ocs.localeCompare(b.ocs); });
+      return d;
+    }
+
+    function render() {
+      var list = document.getElementById('ocs-list');
+      if (!list) return;
+      var data = filtered();
+      var html = '';
+      data.forEach(function(d, i) {
+        var key = d.ocs + d.meio;
+        var isOpen = expandedKey === key;
+        var mW = d.total > 0 ? (d.n_m / d.total * 100).toFixed(1) : 0;
+        var fW = d.total > 0 ? (d.n_f / d.total * 100).toFixed(1) : 0;
+        var pctClass = d.pct_f === 0 ? 'ocs-pct zero' : 'ocs-pct';
+        var pctTxt = d.pct_f === 0 ? '0%' : d.pct_f.toFixed(1) + '%';
+        var namesM = d.names_m.map(function(n){ return '<li>' + n + '</li>'; }).join('');
+        var namesF = d.n_f > 0
+          ? d.names_f.map(function(n){ return '<li>' + n + '</li>'; }).join('')
+          : '<span class="ocs-no-women">Nenhuma mulher</span>';
+        var detailClass = isOpen ? 'ocs-detail open' : 'ocs-detail';
+        html += '<div class="ocs-row" data-key="' + key + '">'
+          + '<div class="ocs-row-header">'
+          + '<span class="ocs-row-idx">' + String(i+1).padStart(2,'0') + '</span>'
+          + '<span class="ocs-row-name">' + d.ocs + '</span>'
+          + '<span class="ocs-row-meio">' + d.meio + '</span>'
+          + '<div class="ocs-track"><div class="ocs-bar-m" style="width:' + mW + '%"></div><div class="ocs-bar-f" style="width:' + fW + '%"></div></div>'
+          + '<span class="' + pctClass + '">' + pctTxt + '</span>'
+          + '</div>'
+          + '<div class="' + detailClass + '">'
+          + '<div class="ocs-detail-cols">'
+          + '<div><div class="ocs-detail-head m">' + d.n_m + ' homens</div><ul class="ocs-names">' + namesM + '</ul></div>'
+          + '<div><div class="ocs-detail-head ' + (d.n_f > 0 ? 'f' : 'empty') + '">' + (d.n_f > 0 ? d.n_f + ' mulheres' : '0 mulheres') + '</div>' + (d.n_f > 0 ? '<ul class="ocs-names">' + namesF + '</ul>' : namesF) + '</div>'
+          + '</div>'
+          + '<div style="font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:8px">'
+          + 'Total: ' + d.total + ' comentadores'
+          + '</div>'
+          + '</div>'
+          + '</div>';
+      });
+      list.innerHTML = html;
+      list.querySelectorAll('.ocs-row').forEach(function(row) {
+        row.addEventListener('click', function() {
+          var k = row.getAttribute('data-key');
+          expandedKey = expandedKey === k ? null : k;
+          render();
+        });
+      });
+    }
+
+    document.querySelectorAll('.ocs-filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.ocs-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeMeio = btn.getAttribute('data-meio');
+        expandedKey = null;
+        render();
+      });
+    });
+    document.querySelectorAll('.ocs-sort-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.ocs-sort-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeSort = btn.getAttribute('data-sort');
+        render();
+      });
+    });
+
+    render();
+  })();
+
+  // === ÓRGÃO CAROUSEL (chapter 04) ===
+  (function() {
+    var ORGAOS = window.OCS_DATA.filter(function(o){ return o.total >= 10; })
+      .sort(function(a,b){ return a.pct_f - b.pct_f; });
+    var openKey = null;
+
+    function cardHtml(o) {
+      var pctTxt = o.pct_f === 0 ? '0' : o.pct_f.toFixed(0);
+      var pctClass = o.pct_f === 0 ? 'orgao-card-pct zero' : 'orgao-card-pct';
+      var mW = (o.n_m / o.total * 100).toFixed(1);
+      var fW = (o.n_f / o.total * 100).toFixed(1);
+      return '<div class="orgao-card' + (openKey === o.ocs ? ' open' : '') + '" data-key="' + o.ocs + '">'
+        + '<div class="orgao-card-meio">' + o.meio + '</div>'
+        + '<div class="orgao-card-name">' + o.ocs + '</div>'
+        + '<div class="' + pctClass + '">' + pctTxt + '<span class="sym">%</span></div>'
+        + '<div class="orgao-card-sub">mulheres</div>'
+        + '<div class="orgao-card-bar"><div class="orgao-card-bar-m" style="width:' + mW + '%"></div><div class="orgao-card-bar-f" style="width:' + fW + '%"></div></div>'
+        + '<div class="orgao-card-count"><span class="num">' + o.total + '</span> pessoas</div>'
+        + '</div>';
+    }
+
+    function detailHtml(o) {
+      var namesM = o.names_m.map(function(n){ return '<li>' + n + '</li>'; }).join('');
+      var namesF = o.n_f > 0
+        ? o.names_f.map(function(n){ return '<li>' + n + '</li>'; }).join('')
+        : '<span class="orgao-no-women">Nenhuma mulher</span>';
+      var pctTxt = o.pct_f === 0 ? '0%' : o.pct_f.toFixed(1) + '%';
+      return '<div class="orgao-detail-head">'
+        + '<span class="orgao-detail-title">' + o.ocs + '<span class="meio-tag">' + o.meio + ' · ' + o.total + ' pessoas</span></span>'
+        + '<span class="orgao-detail-pct">' + pctTxt + ' mulheres</span>'
+        + '</div>'
+        + '<div class="orgao-detail-cols">'
+        + '<div><div class="orgao-detail-col-lbl m">Homens (' + o.n_m + ')</div><ul class="orgao-detail-names">' + namesM + '</ul></div>'
+        + '<div><div class="orgao-detail-col-lbl f">Mulheres (' + o.n_f + ')</div><ul class="orgao-detail-names">' + namesF + '</ul></div>'
+        + '</div>';
+    }
+
+    function render() {
+      var scroll = document.getElementById('orgao-scroll');
+      var detail = document.getElementById('orgao-detail');
+      if (!scroll || !detail) return;
+      scroll.innerHTML = ORGAOS.map(cardHtml).join('');
+      if (openKey) {
+        var o = null;
+        for (var i = 0; i < ORGAOS.length; i++) { if (ORGAOS[i].ocs === openKey) { o = ORGAOS[i]; break; } }
+        detail.innerHTML = o ? detailHtml(o) : '';
+        detail.classList.toggle('open', !!o);
+      } else {
+        detail.classList.remove('open');
+        detail.innerHTML = '';
+      }
+      scroll.querySelectorAll('.orgao-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+          var key = card.getAttribute('data-key');
+          openKey = openKey === key ? null : key;
+          render();
+          if (openKey) {
+            if (typeof detail.scrollIntoView === 'function') {
+              detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        });
+      });
+    }
+
+    render();
+  })();
+
+</script>
+</body>
+</html>
