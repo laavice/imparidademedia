@@ -482,12 +482,14 @@
   footer .methodology ul { margin: 0 0 10px; padding-left: 18px; }
   footer .methodology li { margin-bottom: 6px; }
   footer .methodology strong { color: var(--ink-dim); font-weight: 600; }
-  footer .feedback-box { border: 1px solid rgba(232,84,45,0.35); border-radius: 10px; padding: 20px 22px; margin: 0 0 28px; max-width: 52ch; background: rgba(232,84,45,0.05); }
-  footer .feedback-box p { font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0 0 8px; }
-  footer .feedback-box p:last-child { margin-bottom: 0; }
-  footer .feedback-box .fb-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 16px; color: var(--ink); }
-  footer .feedback-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  footer .feedback-box a:hover { text-decoration: underline; }
+  .feedback-box, footer .feedback-box { border: 1px solid rgba(232,84,45,0.35); border-radius: 10px; padding: 20px 22px; margin: 0 0 28px; max-width: 52ch; background: rgba(232,84,45,0.05); }
+  .feedback-box p, footer .feedback-box p { font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0 0 8px; }
+  .feedback-box p:last-child, footer .feedback-box p:last-child { margin-bottom: 0; }
+  .feedback-box .fb-title, footer .feedback-box .fb-title { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 16px; color: var(--ink); }
+  .feedback-box a, footer .feedback-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .feedback-box a:hover, footer .feedback-box a:hover { text-decoration: underline; }
+  .scope-note { border-left: 2px solid var(--muted); padding: 4px 0 4px 18px; margin: 0 0 40px; max-width: 60ch; }
+  .scope-note p { font-size: 13px; color: var(--ink-dim); line-height: 1.65; margin: 0; }
   footer .colophon { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
   footer .colophon .num { color: var(--ink); font-size: 12px; letter-spacing: 0; }
   footer .ai-credit { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; font-family: 'Fraunces', serif; }
@@ -572,6 +574,19 @@
   .orgao-card-bar-m { background: var(--men); }
   .orgao-card-bar-f { background: var(--women); }
   .orgao-card-count { font-size: 11px; color: var(--muted-dim); }
+  .meio-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+  .meio-summary-col { border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .meio-summary-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
+  .meio-summary-row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 12px; }
+  .meio-summary-row:last-child { margin-bottom: 0; }
+  .ms-tag { font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+  .ms-tag.best { color: var(--women); }
+  .ms-tag.worst { color: var(--accent); }
+  .ms-name { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .ms-pct { font-family: 'Fraunces', serif; font-size: 22px; color: var(--ink-dim); }
+  @media (max-width: 640px) {
+    .meio-summary { grid-template-columns: 1fr; }
+  }
   .orgao-card-count .num { color: var(--ink-dim); }
   .orgao-detail {
     margin-top: 28px;
@@ -805,6 +820,10 @@
 
 <div class="wrap">
 
+  <div class="scope-note">
+    <p>A base de dados exclui o comentariado desportivo, até porque já sabemos que é, na larga maioria, dominado por homens; assim, optou-se por focar na vertente sócio-política, não misturando com uma secção muito enviesada no tocante ao género, embora seja editorialmente defensável fazê-lo.</p>
+  </div>
+
   <!-- 01 - O RETRATO -->
   <section class="data reveal">
     <div class="eyebrow"><span class="num-tag">01</span><span>O retrato</span><span class="line"></span></div>
@@ -814,6 +833,11 @@
     </p>
     <div class="stats-grid" id="stats"></div>
   </section>
+
+  <div class="feedback-box">
+    <p class="fb-title">Esta base de dados está viva.</p>
+    <p>Encontrou um erro ou falta alguém na lista? Ajude-nos a tornar este retrato mais exato — escreva para <a href="mailto:imparidademedia@proton.me">imparidademedia@proton.me</a>.</p>
+  </div>
 
   <!-- 02 - A AUSÊNCIA -->
   <section class="data reveal">
@@ -899,6 +923,25 @@
     <div class="orgao-scroll" id="orgao-scroll"></div>
     <div class="orgao-scroll-hint">Arrasta para o lado para ver mais →</div>
     <div class="orgao-detail" id="orgao-detail"></div>
+
+    <div class="meio-summary">
+      <div class="meio-summary-col">
+        <div class="meio-summary-label">TV</div>
+        <div class="meio-summary-row"><span class="ms-tag best">Mais paritário</span><span class="ms-name">RTP N</span><span class="ms-pct">30,6%</span></div>
+        <div class="meio-summary-row"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">CNN</span><span class="ms-pct">20,7%</span></div>
+      </div>
+      <div class="meio-summary-col">
+        <div class="meio-summary-label">Rádio</div>
+        <div class="meio-summary-row"><span class="ms-tag best">Mais paritário</span><span class="ms-name">Antena 1</span><span class="ms-pct">33,3%</span></div>
+        <div class="meio-summary-row"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">Rádio Observador</span><span class="ms-pct">15,8%</span></div>
+      </div>
+      <div class="meio-summary-col">
+        <div class="meio-summary-label">Imprensa</div>
+        <div class="meio-summary-row"><span class="ms-tag best">Mais paritário</span><span class="ms-name">Público</span><span class="ms-pct">38,1%</span></div>
+        <div class="meio-summary-row"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">Observador</span><span class="ms-pct">21,4%</span></div>
+      </div>
+    </div>
+    <p class="chart-note">Apenas órgãos com pelo menos dez comentadores.</p>
   </section>
 
   <!-- 04b - POR HORÁRIO -->
