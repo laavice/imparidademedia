@@ -325,6 +325,11 @@
     line-height: 1.2;
     min-width: 0;
   }
+  .vbar-label .vbar-sublabel {
+    display: block; margin-top: 3px;
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+    font-size: 13px; letter-spacing: 0; color: var(--muted);
+  }
   .vbar-chart.freq .vbar-row { gap: 4px; }
   .vbar-chart.freq .vbar-pair { gap: 3px; }
   .vbar-chart.freq .vbar { max-width: 16px; }
@@ -894,14 +899,14 @@
     <div class="orgao-scroll" id="orgao-scroll"></div>
     <div class="orgao-scroll-hint">Arrasta para o lado para ver mais →</div>
     <div class="orgao-detail" id="orgao-detail"></div>
-  </section> 
+  </section>
 
   <!-- 04b - POR HORÁRIO -->
   <section class="data reveal">
     <div class="eyebrow"><span class="num-tag">05</span><span>Por horário</span><span class="line"></span></div>
-    <h2 class="section-title">Quanto <em>mais cedo,</em> mais elas <em>desaparecem.</em></h2>
+    <h2 class="section-title">Mais mulheres <em>no total.</em> Menos mulheres <em>na proporção.</em></h2>
     <p class="section-intro">
-      Na TV, a presença feminina vai-se diluindo à medida que o horário se aproxima do prime time. No espaço de maior audiência, ela é zero.
+      No horário nobre da noite há mais mulheres em número absoluto do que no horário nobre da tarde - mas é também a faixa com mais comentadores no total, e a proporção feminina não acompanha esse crescimento. O padrão é consistente: quanto maior a exposição de um horário, maior a desproporção entre homens e mulheres. No Primetime, o de maior audiência, essa desproporção é absoluta.
     </p>
     <div class="vbar-chart" id="chart-horario">
       <div class="vbar-row"></div>
@@ -1066,7 +1071,7 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
         '<div class="' + fCls + '" style="height:' + hF + '%"><span class="vnum">' + c.f + '</span></div>' +
       '</div></div>';
     }).join('');
-    labels.innerHTML = cats.map(c => '<div class="vbar-label">' + c.label + '</div>').join('');
+    labels.innerHTML = cats.map(c => '<div class="vbar-label">' + c.label + (c.sublabel ? '<span class="vbar-sublabel">' + c.sublabel + '</span>' : '') + '</div>').join('');
   }
 
   // === 03 Por meio ===
@@ -1078,9 +1083,9 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
 
   // === 04 Por horário (TV only) ===
   renderVBar('chart-horario', [
-    { label: 'Tarde',     m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre tarde').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre tarde').length },
-    { label: 'Noite',     m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre noite').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre noite').length },
-    { label: 'Primetime', m: DATA.filter(d => d.g==='M' && d.te==='Primetime').length, f: DATA.filter(d => d.g==='F' && d.te==='Primetime').length },
+    { label: 'Tarde',     sublabel: '18h30–20h',  m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre tarde').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre tarde').length },
+    { label: 'Primetime', sublabel: '20h–21h30',  m: DATA.filter(d => d.g==='M' && d.te==='Primetime').length, f: DATA.filter(d => d.g==='F' && d.te==='Primetime').length },
+    { label: 'Noite',     sublabel: '21h–00h',    m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre noite').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre noite').length },
   ]);
 
   // === 05 Por frequência (max across media) ===
