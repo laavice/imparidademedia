@@ -103,6 +103,11 @@
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
   .topcount { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
   .topcount .num { font-size: 13px; color: var(--ink); margin-right: 3px; }
+  .hero-top-right { display: flex; align-items: center; gap: 16px; }
+  .lang-toggle { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+  .lang-toggle button { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; background: none; border: none; color: var(--muted); padding: 5px 11px; cursor: pointer; transition: color .15s, background .15s; }
+  .lang-toggle button.active { color: var(--bg); background: var(--ink); }
+  .lang-toggle button:not(.active):hover { color: var(--ink); }
 
   .hero-title {
     text-align: center;
@@ -798,27 +803,33 @@
 
   <div class="hero-content">
     <div class="hero-top">
-      <div class="topmark"><span class="dot"></span>Em emissão</div>
-      <div class="topcount"><span class="num">418</span>opinion makers</div>
+      <div class="topmark" data-i18n="topmark"><span class="dot"></span>Em emissão</div>
+      <div class="hero-top-right">
+        <div class="topcount"><span class="num">418</span>opinion makers</div>
+        <div class="lang-toggle">
+          <button type="button" data-lang="pt" class="active">PT</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+      </div>
     </div>
 
     <div class="hero-title">
-      <div class="hero-eyebrow">Um retrato · Portugal · 2026</div>
+      <div class="hero-eyebrow" data-i18n="hero-eyebrow">Um retrato · Portugal · 2026</div>
       <h1>
         <span class="imp"><span class="imp-letters">IM</span>PARIDADE</span>
         <span class="media">MEDIA</span>
       </h1>
-      <p class="hero-tagline">
+      <p class="hero-tagline" data-i18n="hero-tagline">
         Que equidade de género existe nos órgãos de comunicação social em Portugal? <em>Uma base de dados em construção.</em>
       </p>
     </div>
 
     <div class="hero-bottom">
-      <div class="hero-bigstat">
-        <span class="accent">72%</span> <span class="hl-red">homens.</span> 28% mulheres.
-        <span class="small">Análise a 418 <em>opinion makers</em> em TV, Imprensa e Rádio</span>
+      <div class="hero-bigstat" data-i18n="hero-bigstat">
+        <span class="accent" data-i18n="i2">72%</span> <span class="hl-red">homens.</span> 28% mulheres.
+        <span class="small" data-i18n="i3">Análise a 418 <em>opinion makers</em> em TV, Imprensa e Rádio</span>
       </div>
-      <div class="scroll-cue">Continue</div>
+      <div class="scroll-cue" data-i18n="i4">Continue</div>
     </div>
   </div>
 </header>
@@ -826,37 +837,37 @@
 <div class="wrap">
 
   <div class="scope-note">
-    <p>A base de dados exclui comentadores desportivos, cujo enviesamento pelo claro domínio masculino sobrecarregaria o propósito do site.</p>
+    <p data-i18n="i5">A base de dados exclui comentadores desportivos, cujo enviesamento pelo claro domínio masculino sobrecarregaria o propósito do site.</p>
   </div>
 
   <!-- 01 - O RETRATO -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">01</span><span>O retrato</span><span class="line"></span></div>
-    <h2 class="section-title">Os números <em>do desequilíbrio.</em></h2>
+    <div class="eyebrow" data-i18n="i6"><span class="num-tag">01</span><span>O retrato</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i7">Os números <em>do desequilíbrio.</em></h2>
     <p class="section-intro">
-      Por cada mulher que comenta nos media nacionais, há mais de duas vozes masculinas. Em certos espaços — os mais visíveis, os mais ouvidos — não há nenhuma.
+      <span data-i18n="i8">Por cada mulher que comenta nos media nacionais, há mais de duas vozes masculinas. Em certos espaços — os mais visíveis, os mais ouvidos — não há nenhuma.</span>
     </p>
     <div class="stats-grid" id="stats"></div>
   </section>
 
   <div class="feedback-box">
-    <p class="fb-title">Esta base de dados está viva.</p>
-    <p>Encontrou um erro ou falta alguém na lista? Ajude-nos a tornar este retrato mais exato — escreva para <a href="mailto:imparidademedia@proton.me">imparidademedia@proton.me</a>.</p>
+    <p class="fb-title" data-i18n="i93">Esta base de dados está viva.</p>
+    <p data-i18n="i9">Encontrou um erro ou falta alguém na lista? Ajude-nos a tornar este retrato mais exato — escreva para <a href="mailto:imparidademedia@proton.me">imparidademedia@proton.me</a>.</p>
   </div>
 
   <!-- 02 - A AUSÊNCIA -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">02</span><span>A ausência</span><span class="line"></span></div>
-    <h2 class="section-title">No horário nobre</h2>
+    <div class="eyebrow" data-i18n="i11"><span class="num-tag">02</span><span>A ausência</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i12">No horário nobre</h2>
 
     <div class="absence-statement">
-      <div class="lbl">Jornal em canal generalista</div>
+      <div class="lbl" data-i18n="i13">Jornal em canal generalista</div>
       <span class="num">0</span>
-      <div class="end">mulheres a comentar <span class="reg">regularmente.</span></div>
+      <div class="end" data-i18n="i14">mulheres a comentar <span class="reg">regularmente.</span></div>
     </div>
 
     <p class="section-intro" style="margin-bottom:24px">
-      Estes são os cinco homens que ocupam esse espaço — o de maior audiência, o de maior influência, o que define a conversa pública:
+      <span data-i18n="i15">Estes são os cinco homens que ocupam esse espaço — o de maior audiência, o de maior influência, o que define a conversa pública:</span>
     </p>
 
     <ol class="name-list">
@@ -868,22 +879,22 @@
     </ol>
 
     <div class="counter-list">
-      <div class="heading">E as mulheres em primetime são</div>
+      <div class="heading" data-i18n="i16">E as mulheres em primetime são</div>
       <div class="dash">—</div>
-      <div class="note">Nenhuma entra nesta lista.</div>
+      <div class="note" data-i18n="i17">Nenhuma entra nesta lista.</div>
     </div>
     <div class="domingo-block">
-      <div class="domingo-eyebrow">Ao domingo</div>
-      <p class="domingo-lead">O fim de semana tem o seu próprio padrão. Dos dez comentadores que aparecem regularmente ao domingo,</p>
+      <div class="domingo-eyebrow" data-i18n="i18">Ao domingo</div>
+      <p class="domingo-lead" data-i18n="i19">O fim de semana tem o seu próprio padrão. Dos dez comentadores que aparecem regularmente ao domingo,</p>
       <div class="domingo-ratio">
         <div class="domingo-side men-side">
           <span class="domingo-num" style="color:var(--men)">9</span>
-          <span class="domingo-lbl">homens</span>
+          <span class="domingo-lbl" data-i18n="i20">homens</span>
         </div>
         <div class="domingo-div">/</div>
         <div class="domingo-side women-side">
           <span class="domingo-num" style="color:var(--women)">1</span>
-          <span class="domingo-lbl">mulher</span>
+          <span class="domingo-lbl" data-i18n="i21">mulher</span>
         </div>
       </div>
       <ol class="name-list" style="margin-top:24px">
@@ -903,121 +914,121 @@
 
   <!-- 03 - POR MEIO -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">03</span><span>Por meio</span><span class="line"></span></div>
-    <h2 class="section-title">O que <em>se vê,</em> o que <em>se lê,</em> o que <em>se ouve.</em></h2>
+    <div class="eyebrow" data-i18n="i22"><span class="num-tag">03</span><span>Por meio</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i23">O que <em>se vê,</em> o que <em>se lê,</em> o que <em>se ouve.</em></h2>
     <p class="section-intro">
-      A representação muda consoante o sítio. A imprensa é o meio mais equilibrado dos três — embora <strong>"equilibrado"</strong> continue a ser um terço de mulheres.
+      <span data-i18n="i24">A representação muda consoante o sítio. A imprensa é o meio mais equilibrado dos três — embora <strong>"equilibrado"</strong> continue a ser um terço de mulheres.</span>
     </p>
     <div class="vbar-chart" id="chart-meio">
       <div class="vbar-row"></div>
       <div class="vbar-labels"></div>
     </div>
     <div class="vbar-legend">
-      <span><span class="sw sw-m"></span>Homens</span>
+      <span data-i18n="i25"><span class="sw sw-m"></span>Homens</span>
       <span><span class="sw sw-f"></span>Mulheres</span>
     </div>
   </section>
 
   <!-- 04 - POR ÓRGÃO -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">04</span><span>Por órgão</span><span class="line"></span></div>
-    <h2 class="section-title">Nem todos os <em>órgãos</em> pesam o mesmo.</h2>
+    <div class="eyebrow" data-i18n="i27"><span class="num-tag">04</span><span>Por órgão</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i28">Nem todos os <em>órgãos</em> pesam o mesmo.</h2>
     <p class="section-intro">
-      Catorze órgãos com pelo menos dez comentadores, do menos ao mais paritário. Toca num cartão para ver os nomes.
+      <span data-i18n="i29">Catorze órgãos com pelo menos dez comentadores, do menos ao mais paritário. Toca num cartão para ver os nomes.</span>
     </p>
     <div class="orgao-scroll" id="orgao-scroll"></div>
-    <div class="orgao-scroll-hint">Arrasta para o lado para ver mais →</div>
+    <div class="orgao-scroll-hint" data-i18n="i30">Arrasta para o lado para ver mais →</div>
     <div class="orgao-detail" id="orgao-detail"></div>
 
     <div class="meio-summary">
       <div class="meio-summary-col">
         <div class="meio-summary-label">TV</div>
-        <div class="meio-summary-row"><span class="ms-tag best">Mais paritário</span><span class="ms-name">RTP N</span><span class="ms-pct">32,0%</span></div>
-        <div class="meio-summary-row"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">CNN</span><span class="ms-pct">20,7%</span></div>
+        <div class="meio-summary-row" data-i18n="i31"><span class="ms-tag best">Mais paritário</span><span class="ms-name">RTP N</span><span class="ms-pct">32,0%</span></div>
+        <div class="meio-summary-row" data-i18n="i32"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">CNN</span><span class="ms-pct">20,7%</span></div>
       </div>
       <div class="meio-summary-col">
-        <div class="meio-summary-label">Rádio</div>
-        <div class="meio-summary-row"><span class="ms-tag best">Mais paritário</span><span class="ms-name">Antena 1</span><span class="ms-pct">33,3%</span></div>
-        <div class="meio-summary-row"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">Rádio Observador</span><span class="ms-pct">15,8%</span></div>
+        <div class="meio-summary-label" data-i18n="i33">Rádio</div>
+        <div class="meio-summary-row" data-i18n="i34"><span class="ms-tag best">Mais paritário</span><span class="ms-name">Antena 1</span><span class="ms-pct">33,3%</span></div>
+        <div class="meio-summary-row" data-i18n="i35"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">Rádio Observador</span><span class="ms-pct">15,8%</span></div>
       </div>
       <div class="meio-summary-col">
-        <div class="meio-summary-label">Imprensa</div>
-        <div class="meio-summary-row"><span class="ms-tag best">Mais paritário</span><span class="ms-name">DN</span><span class="ms-pct">37,7%</span></div>
-        <div class="meio-summary-row"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">CM</span><span class="ms-pct">18,2%</span></div>
+        <div class="meio-summary-label" data-i18n="i36">Imprensa</div>
+        <div class="meio-summary-row" data-i18n="i37"><span class="ms-tag best">Mais paritário</span><span class="ms-name">DN</span><span class="ms-pct">37,7%</span></div>
+        <div class="meio-summary-row" data-i18n="i38"><span class="ms-tag worst">Menos paritário</span><span class="ms-name">CM</span><span class="ms-pct">18,2%</span></div>
       </div>
     </div>
-    <p class="chart-note">Apenas órgãos com pelo menos dez comentadores.</p>
+    <p class="chart-note" data-i18n="i39">Apenas órgãos com pelo menos dez comentadores.</p>
   </section>
 
   <!-- 04b - POR HORÁRIO -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">05</span><span>Por horário</span><span class="line"></span></div>
-    <h2 class="section-title">Quando há <em>mais mulheres</em> em absoluto, há <em>menos</em> em proporção.</h2>
+    <div class="eyebrow" data-i18n="i41"><span class="num-tag">05</span><span>Por horário</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i42">Quando há <em>mais mulheres</em> em absoluto, há <em>menos</em> em proporção.</h2>
     <p class="section-intro">
-      No horário nobre da noite há mais mulheres em número absoluto do que no horário nobre da tarde - mas é também a faixa com mais comentadores no total, e a proporção feminina não acompanha esse crescimento. O padrão é consistente: quanto maior a exposição de um horário, maior a desproporção entre homens e mulheres. No Primetime, o de maior audiência, essa desproporção é absoluta.
+      <span data-i18n="i43">No horário nobre da noite há mais mulheres em número absoluto do que no horário nobre da tarde - mas é também a faixa com mais comentadores no total, e a proporção feminina não acompanha esse crescimento. O padrão é consistente: quanto maior a exposição de um horário, maior a desproporção entre homens e mulheres. No Primetime, o de maior audiência, essa desproporção é absoluta.</span>
     </p>
     <div class="vbar-chart" id="chart-horario">
       <div class="vbar-row"></div>
       <div class="vbar-labels"></div>
     </div>
-    <p class="chart-note">Apenas comentadores com presença em televisão.</p>
+    <p class="chart-note" data-i18n="i44">Apenas comentadores com presença em televisão.</p>
   </section>
 
   <!-- 05 - POR FREQUÊNCIA -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">06</span><span>Por frequência</span><span class="line"></span></div>
-    <h2 class="section-title">A paridade <em>só chega</em> a quem aparece <em>poucas vezes.</em></h2>
+    <div class="eyebrow" data-i18n="i46"><span class="num-tag">06</span><span>Por frequência</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i47">A paridade <em>só chega</em> a quem aparece <em>poucas vezes.</em></h2>
     <p class="section-intro">
-      Quanto mais constante é a presença mediática, maior o desequilíbrio. Nos comentadores diários, as mulheres são uma minoria residual. É entre quem participa <strong>pontualmente</strong> — o degrau mais baixo da escala — que a diferença mais se estreita.
+      <span data-i18n="i48">Quanto mais constante é a presença mediática, maior o desequilíbrio. Nos comentadores diários, as mulheres são uma minoria residual. É entre quem participa <strong>pontualmente</strong> — o degrau mais baixo da escala — que a diferença mais se estreita.</span>
     </p>
     <div class="vbar-chart freq" id="chart-freq">
       <div class="vbar-row"></div>
       <div class="vbar-labels"></div>
     </div>
-    <p class="chart-note">Frequência máxima registada para cada pessoa em qualquer um dos seus meios.</p>
+    <p class="chart-note" data-i18n="i49">Frequência máxima registada para cada pessoa em qualquer um dos seus meios.</p>
   </section>
 
   <!-- 06 - A ESCALA -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">07</span><span>A escala</span><span class="line"></span></div>
-    <h2 class="section-title">A escala <em>do topo.</em></h2>
+    <div class="eyebrow" data-i18n="i50"><span class="num-tag">07</span><span>A escala</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i51">A escala <em>do topo.</em></h2>
     <p class="section-intro">
-      Cada ponto é uma pessoa. Mais à direita = mais exposição agregada. Toca num ponto para o identificar.
+      <span data-i18n="i52">Cada ponto é uma pessoa. Mais à direita = mais exposição agregada. Toca num ponto para o identificar.</span>
     </p>
     <div class="strip-wrap">
-      <div class="strip" id="strip" role="img" aria-label="Distribuição de scores de exposição"></div>
+      <div class="strip" id="strip" role="img" aria-label="Distribuição de scores de exposição" data-i18n="i53"></div>
       <div class="strip-axis" id="strip-axis"></div>
       <div class="selected-card" id="sel-card" aria-live="polite"></div>
     </div>
     <div class="top10">
-      <div class="top10-title">Top 10 — os mais expostos</div>
+      <div class="top10-title" data-i18n="i54">Top 10 — os mais expostos</div>
       <ol class="top10-list" id="top10"></ol>
     </div>
   </section>
 
   <!-- 07 - AS PESSOAS -->
   <section class="data reveal">
-    <div class="eyebrow"><span class="num-tag">08</span><span>As pessoas</span><span class="line"></span></div>
-    <h2 class="section-title">Os <em>418.</em></h2>
-    <p class="section-intro">Índice completo. Filtra, ordena, procura.</p>
+    <div class="eyebrow" data-i18n="i55"><span class="num-tag">08</span><span>As pessoas</span><span class="line"></span></div>
+    <h2 class="section-title" data-i18n="i56">Os <em>418.</em></h2>
+    <p class="section-intro" data-i18n="i57">Índice completo. Filtra, ordena, procura.</p>
 
     <div class="filters-block">
       <input type="search" id="search" placeholder="Procurar nome ou órgão…" autocomplete="off" autocorrect="off" aria-label="Procurar" />
       <div class="chip-group">
-        <div class="chip-group-label">Género</div>
+        <div class="chip-group-label" data-i18n="i59">Género</div>
         <div class="chips" id="chips-g">
-          <button class="chip active" data-v="" type="button">Todos</button>
-          <button class="chip" data-v="M" type="button">Homens</button>
-          <button class="chip" data-v="F" type="button">Mulheres</button>
+          <button class="chip active" data-v="" type="button" data-i18n="i94">Todos</button>
+          <button class="chip" data-v="M" type="button" data-i18n="i95">Homens</button>
+          <button class="chip" data-v="F" type="button" data-i18n="i96">Mulheres</button>
         </div>
       </div>
       <div class="chip-group">
-        <div class="chip-group-label">Meio</div>
+        <div class="chip-group-label" data-i18n="i60">Meio</div>
         <div class="chips" id="chips-m">
-          <button class="chip active" data-v="" type="button">Todos</button>
-          <button class="chip" data-v="tv" type="button">TV</button>
-          <button class="chip" data-v="im" type="button">Imprensa</button>
-          <button class="chip" data-v="rd" type="button">Rádio</button>
+          <button class="chip active" data-v="" type="button" data-i18n="i94">Todos</button>
+          <button class="chip" data-v="tv" type="button" data-i18n="i97">TV</button>
+          <button class="chip" data-v="im" type="button" data-i18n="i61">Imprensa</button>
+          <button class="chip" data-v="rd" type="button" data-i18n="i62">Rádio</button>
         </div>
       </div>
     </div>
@@ -1025,62 +1036,167 @@
     <div class="sort-row">
       <span class="count-txt" id="result-count"><span class="num">418</span> resultados</span>
       <select id="sort" aria-label="Ordenar">
-        <option value="s-desc">Score (maior)</option>
-        <option value="s-asc">Score (menor)</option>
-        <option value="n-asc">Nome A→Z</option>
-        <option value="n-desc">Nome Z→A</option>
+        <option value="s-desc" data-i18n="i64">Score (maior)</option>
+        <option value="s-asc" data-i18n="i65">Score (menor)</option>
+        <option value="n-asc" data-i18n="i66">Nome A→Z</option>
+        <option value="n-desc" data-i18n="i67">Nome Z→A</option>
       </select>
     </div>
 
     <ol class="entry-list" id="entries"></ol>
-    <button class="load-more" id="load-more" type="button" style="display:none">Mostrar mais</button>
+    <button class="load-more" id="load-more" type="button" style="display:none" data-i18n="i68">Mostrar mais</button>
   </section>
 
   <footer>
-    <div class="end-mark">Metodologia.</div>
+    <div class="end-mark" data-i18n="i69">Metodologia.</div>
     <div class="methodology">
 
-      <h3>O que é medido</h3>
-      <p>Este levantamento regista <strong>opinion makers</strong> - comentadores, analistas e colunistas com presença regular em TV, imprensa ou rádio portuguesas. Entram na base de dados pessoas que tenham publicado ou intervindo no espaço mediático pelo menos 3 vezes nos últimos seis meses. Antes de qualquer score, o que importa é a contagem simples: <strong>quantos são homens e quantas são mulheres</strong>. É essa imparidade absoluta - quem tem voz e quem não tem - que este projecto quer mostrar.</p>
-      <p>O score de exposição é secundário. Serve só para dar noção de intensidade dentro desse desequilíbrio. Falar uma vez por mês não é o mesmo que falar duas vezes por semana; comentar ao domingo à noite, em horário nobre, não é o mesmo que comentar a meio da tarde de uma quarta-feira. Captar essa diferença sem reduzir tudo a uma contagem de presenças obrigou a decisões de peso e hierarquia, que são, de longe, o ponto mais discutível desta metodologia. O score ajuda a perceber gradação. Não substitui a contagem de homens e mulheres, que continua a ser o dado central.</p>
+      <h3 data-i18n="i70">O que é medido</h3>
+      <p data-i18n="i71">Este levantamento regista <strong>opinion makers</strong> - comentadores, analistas e colunistas com presença regular em TV, imprensa ou rádio portuguesas. Entram na base de dados pessoas que tenham publicado ou intervindo no espaço mediático pelo menos 3 vezes nos últimos seis meses. Antes de qualquer score, o que importa é a contagem simples: <strong>quantos são homens e quantas são mulheres</strong>. É essa imparidade absoluta - quem tem voz e quem não tem - que este projecto quer mostrar.</p>
+      <p data-i18n="i72">O score de exposição é secundário. Serve só para dar noção de intensidade dentro desse desequilíbrio. Falar uma vez por mês não é o mesmo que falar duas vezes por semana; comentar ao domingo à noite, em horário nobre, não é o mesmo que comentar a meio da tarde de uma quarta-feira. Captar essa diferença sem reduzir tudo a uma contagem de presenças obrigou a decisões de peso e hierarquia, que são, de longe, o ponto mais discutível desta metodologia. O score ajuda a perceber gradação. Não substitui a contagem de homens e mulheres, que continua a ser o dado central.</p>
 
-      <h3>Como o score é calculado</h3>
-      <p>Para cada meio em que a pessoa aparece, multiplicam-se três fatores: o <strong>peso do canal</strong> (TV generalista=11, TV de cabo=10, imprensa=6, rádio=3, refletindo audiência e alcance aproximados), o <strong>peso do horário</strong> quando aplicável a TV (primetime=5, horário nobre noite=3, horário nobre tarde=2, com bónus de +5 se o programa for de domingo), e o <strong>multiplicador de frequência</strong> (de diária=5 a pontual=0.25). As três componentes - TV, imprensa, rádio - somam-se e o resultado é reescalado para um intervalo de 0 a 20.</p>
-      <p>O valor 20 é um <strong>tecto teórico</strong>. Ninguém o atinge na prática: corresponderia a alguém presente em simultâneo na TV generalista, em primetime de domingo, todos os dias, mais na imprensa todos os dias e na rádio todos os dias. O score mais alto do levantamento é 11,19 - pouco mais de metade desse tecto. Os scores reais ficam concentrados na zona baixa da escala porque a exposição máxima simultânea nos três meios, todos os dias, é um cenário extremo que praticamente não existe.</p>
-      <p>A fórmula é uma simplificação deliberada. Não distingue um comentador com 2 minutos de intervenção de outro com 20 no mesmo programa, nem capta a audiência real de cada slot fora das categorias genéricas usadas aqui. É uma proxy estrutural, não uma medição direta de audiência ou impacto, e deve ser lida assim: indicador de intensidade relativa, não verdade absoluta.</p>
+      <h3 data-i18n="i73">Como o score é calculado</h3>
+      <p data-i18n="i74">Para cada meio em que a pessoa aparece, multiplicam-se três fatores: o <strong>peso do canal</strong> (TV generalista=11, TV de cabo=10, imprensa=6, rádio=3, refletindo audiência e alcance aproximados), o <strong>peso do horário</strong> quando aplicável a TV (primetime=5, horário nobre noite=3, horário nobre tarde=2, com bónus de +5 se o programa for de domingo), e o <strong>multiplicador de frequência</strong> (de diária=5 a pontual=0.25). As três componentes - TV, imprensa, rádio - somam-se e o resultado é reescalado para um intervalo de 0 a 20.</p>
+      <p data-i18n="i75">O valor 20 é um <strong>tecto teórico</strong>. Ninguém o atinge na prática: corresponderia a alguém presente em simultâneo na TV generalista, em primetime de domingo, todos os dias, mais na imprensa todos os dias e na rádio todos os dias. O score mais alto do levantamento é 11,19 - pouco mais de metade desse tecto. Os scores reais ficam concentrados na zona baixa da escala porque a exposição máxima simultânea nos três meios, todos os dias, é um cenário extremo que praticamente não existe.</p>
+      <p data-i18n="i76">A fórmula é uma simplificação deliberada. Não distingue um comentador com 2 minutos de intervenção de outro com 20 no mesmo programa, nem capta a audiência real de cada slot fora das categorias genéricas usadas aqui. É uma proxy estrutural, não uma medição direta de audiência ou impacto, e deve ser lida assim: indicador de intensidade relativa, não verdade absoluta.</p>
 
-      <h3>Como os dados são recolhidos</h3>
-      <p>Os dados são curados manualmente, com base em observação direta e contínua da grelha dos principais canais de TV, jornais e rádios portugueses. Não existe uma fonte pública estruturada - uma API, um registo da ERC - que liste comentadores fixos por programa. Esta base de dados nasceu de visionamento, leitura e registo manual, o que traz três limitações:</p>
+      <h3 data-i18n="i77">Como os dados são recolhidos</h3>
+      <p data-i18n="i78">Os dados são curados manualmente, com base em observação direta e contínua da grelha dos principais canais de TV, jornais e rádios portugueses. Não existe uma fonte pública estruturada - uma API, um registo da ERC - que liste comentadores fixos por programa. Esta base de dados nasceu de visionamento, leitura e registo manual, o que traz três limitações:</p>
       <ul>
-        <li><strong>Cobertura incompleta.</strong> Cobrem-se os canais e órgãos com maior audiência, não todos os que existem em Portugal. Comentadores presentes em órgãos regionais, locais, ou plataformas digitais mais pequenas não são contemplados.</li>
-        <li><strong>Desfasamento temporal.</strong> As grelhas mudam - contratos terminam, programas são cancelados, entram novos painelistas. Os dados refletem um retrato aproximado de um período recente, não uma fotografia em tempo real.</li>
-        <li><strong>Erro humano.</strong> Classificar horário, frequência e canal de centenas de pessoas é um processo sujeito a erro de registo, de memória, ou de interpretação dos critérios.</li>
+        <li data-i18n="i79"><strong>Cobertura incompleta.</strong> Cobrem-se os canais e órgãos com maior audiência, não todos os que existem em Portugal. Comentadores presentes em órgãos regionais, locais, ou plataformas digitais mais pequenas não são contemplados.</li>
+        <li data-i18n="i80"><strong>Desfasamento temporal.</strong> As grelhas mudam - contratos terminam, programas são cancelados, entram novos painelistas. Os dados refletem um retrato aproximado de um período recente, não uma fotografia em tempo real.</li>
+        <li data-i18n="i81"><strong>Erro humano.</strong> Classificar horário, frequência e canal de centenas de pessoas é um processo sujeito a erro de registo, de memória, ou de interpretação dos critérios.</li>
       </ul>
 
-      <h3>O que não tentamos resolver</h3>
-      <p>Há decisões de classificação que são inevitavelmente discricionárias e que assumimos sem rodeios:</p>
+      <h3 data-i18n="i82">O que não tentamos resolver</h3>
+      <p data-i18n="i83">Há decisões de classificação que são inevitavelmente discricionárias e que assumimos sem rodeios:</p>
       <ul>
-        <li>A fronteira entre "comentador fixo" e "convidado frequente" nem sempre é nítida. Usou-se o critério de presença recorrente e identificável, não um contrato formal que não temos como verificar.</li>
-        <li>Os géneros foram atribuídos com base na apresentação pública conhecida de cada pessoa, sem contacto direto para confirmação em todos os casos.</li>
-        <li>Programas de género híbrido - entrevista, humor, talk-show - foram classificados pela componente dominante de comentário de atualidade. Por exemplo, humor e entretenimento foram separados da categoria de telejornal/primetime de opinião política, para não distorcer análises sobre comentário noticioso.</li>
+        <li data-i18n="i84">A fronteira entre "comentador fixo" e "convidado frequente" nem sempre é nítida. Usou-se o critério de presença recorrente e identificável, não um contrato formal que não temos como verificar.</li>
+        <li data-i18n="i85">Os géneros foram atribuídos com base na apresentação pública conhecida de cada pessoa, sem contacto direto para confirmação em todos os casos.</li>
+        <li data-i18n="i86">Programas de género híbrido - entrevista, humor, talk-show - foram classificados pela componente dominante de comentário de atualidade. Por exemplo, humor e entretenimento foram separados da categoria de telejornal/primetime de opinião política, para não distorcer análises sobre comentário noticioso.</li>
       </ul>
 
-      <h3>Porque publicamos isto mesmo assim</h3>
-      <p>Nenhum levantamento deste tipo é perfeito, nem este nem qualquer alternativa que dependa de observação humana em vez de dados que as próprias estações não publicam. Mesmo assim, um retrato aproximado e honesto sobre os seus próprios limites é mais útil do que nenhum retrato. A assimetria de género que estes dados revelam é demasiado grande para se explicar por margem de erro de classificação.</p>
-      <p>Esta base de dados está aberta a correções. Encontrou um erro, uma omissão, ou alguém que devia estar aqui e não está? Agradecemos o contacto - ver caixa abaixo.</p>
+      <h3 data-i18n="i87">Porque publicamos isto mesmo assim</h3>
+      <p data-i18n="i88">Nenhum levantamento deste tipo é perfeito, nem este nem qualquer alternativa que dependa de observação humana em vez de dados que as próprias estações não publicam. Mesmo assim, um retrato aproximado e honesto sobre os seus próprios limites é mais útil do que nenhum retrato. A assimetria de género que estes dados revelam é demasiado grande para se explicar por margem de erro de classificação.</p>
+      <p data-i18n="i89">Esta base de dados está aberta a correções. Encontrou um erro, uma omissão, ou alguém que devia estar aqui e não está? Agradecemos o contacto - ver caixa abaixo.</p>
 
     </div>
     <div class="feedback-box">
-      <p class="fb-title">Esta base de dados está viva.</p>
-      <p>Encontrou um erro ou falta alguém na lista? Ajude-nos a tornar este retrato mais exato - escreva para <a href="mailto:imparidademedia@proton.me">imparidademedia@proton.me</a>.</p>
+      <p class="fb-title" data-i18n="i90">Esta base de dados está viva.</p>
+      <p data-i18n="i91">Encontrou um erro ou falta alguém na lista? Ajude-nos a tornar este retrato mais exato - escreva para <a href="mailto:imparidademedia@proton.me">imparidademedia@proton.me</a>.</p>
     </div>
     <div class="colophon">Imparidade Media · v<span class="num">0.5</span> · <span class="num">2026</span></div>
-    <div class="ai-credit">Este projecto só é possível graças à AI. Desenvolvido em conjunto com Claude.</div>
+    <div class="ai-credit" data-i18n="i92">Este projecto só é possível graças à AI. Desenvolvido em conjunto com Claude.</div>
   </footer>
 
 </div>
 
 <script>
+let LANG = (function(){ try { return localStorage.getItem('imparidade_lang') || 'pt'; } catch(e){ return 'pt'; } })();
+window.__i18nRenderers = [];
+const TR_VAL = {
+  pt: { 'Primetime':'Primetime', 'Horário nobre noite':'Horário nobre noite', 'Horário nobre tarde':'Horário nobre tarde', 'Horário nobre entretenimento':'Horário nobre entretenimento',
+        'Diária':'Diária', '3x por semana':'3x por semana', 'Bi-semanal':'Bi-semanal', 'Semanal':'Semanal', 'Quinzenal':'Quinzenal', 'Mensal':'Mensal', 'Pontual':'Pontual' },
+  en: { 'Primetime':'Primetime', 'Horário nobre noite':'Late-night primetime', 'Horário nobre tarde':'Afternoon primetime', 'Horário nobre entretenimento':'Primetime entertainment',
+        'Diária':'Daily', '3x por semana':'3x a week', 'Bi-semanal':'Twice weekly', 'Semanal':'Weekly', 'Quinzenal':'Fortnightly', 'Mensal':'Monthly', 'Pontual':'Occasional' }
+};
+function trVal(v) { return (TR_VAL[LANG] && TR_VAL[LANG][v]) || v; }
+const TR_MEIO = { pt: { 'TV':'TV', 'Imprensa':'Imprensa', 'Rádio':'Rádio' }, en: { 'TV':'TV', 'Imprensa':'Press', 'Rádio':'Radio' } };
+function trMeio(v) { return (TR_MEIO[LANG] && TR_MEIO[LANG][v]) || v; }
+const STR = {
+  pt: {
+    activeLbl: 'Opinion makers ativos', ratioLbl: 'Rácio H / M', ratioSub: 'mais homens do que mulheres',
+    primetimeLbl: 'Primetime de TV', primetimeSub: 'mulheres em horário nobre',
+    top10Lbl: 'Top 10 do score', top10Sub: 'homens / mulheres no topo',
+    men: 'homens', women: 'mulheres',
+    vTelevisao: 'Televisão', vImprensa: 'Imprensa', vRadio: 'Rádio',
+    vTarde: 'Tarde', vPrimetimeG: 'Primetime Generalista', vNoite: 'Noite',
+    freqLbl: ['Diária','3×/sem','Bi-sem.','Semanal','Quinzenal','Mensal','Pontual'],
+    tvPrefix: 'TV', imPrefix: 'Imprensa', rdPrefix: 'Rádio',
+    noMedia: 'Sem meios registados', noResults: 'Nenhum resultado para esta combinação.',
+    resultWord: (n) => n === 1 ? 'resultado' : 'resultados',
+    showMore: (n) => 'Mostrar mais (' + n + ' restantes)',
+    ocsNoWomen: 'Nenhuma mulher', ocsTotal: (n) => 'Total: ' + n + ' comentadores',
+    orgaoSub: 'mulheres', peopleWord: 'pessoas', orgaoPeopleInline: (n) => n + ' pessoas',
+    orgaoNoWomen: 'Nenhuma mulher', orgaoMen: (n) => 'Homens (' + n + ')', orgaoWomen: (n) => 'Mulheres (' + n + ')',
+    orgaoPctWomen: 'mulheres',
+    title: 'Imparidade Media — um retrato',
+  },
+  en: {
+    activeLbl: 'Active opinion makers', ratioLbl: 'Men / Women ratio', ratioSub: 'more men than women',
+    primetimeLbl: 'TV Primetime', primetimeSub: 'women in primetime',
+    top10Lbl: 'Top 10 by score', top10Sub: 'men / women at the top',
+    men: 'men', women: 'women',
+    vTelevisao: 'Television', vImprensa: 'Press', vRadio: 'Radio',
+    vTarde: 'Afternoon', vPrimetimeG: 'Generalist Primetime', vNoite: 'Night',
+    freqLbl: ['Daily','3×/wk','2×/wk','Weekly','Fortnightly','Monthly','Occasional'],
+    tvPrefix: 'TV', imPrefix: 'Press', rdPrefix: 'Radio',
+    noMedia: 'No media registered', noResults: 'No results for this combination.',
+    resultWord: (n) => n === 1 ? 'result' : 'results',
+    showMore: (n) => 'Show more (' + n + ' remaining)',
+    ocsNoWomen: 'No women', ocsTotal: (n) => 'Total: ' + n + ' commentators',
+    orgaoSub: 'women', peopleWord: 'people', orgaoPeopleInline: (n) => n + ' people',
+    orgaoNoWomen: 'No women', orgaoMen: (n) => 'Men (' + n + ')', orgaoWomen: (n) => 'Women (' + n + ')',
+    orgaoPctWomen: 'women',
+    title: 'Imparidade Media — a portrait',
+  },
+};
+function T(key) { return STR[LANG][key]; }
+
+let I18N_PT_CAPTURED = false;
+const I18N_PT = {};
+const I18N_EN = {"i1": "        What gender equity exists among opinion makers in Portuguese media? <em>A database in progress.</em>", "i2": "72%</span> <span class=\"hl-red\">men.</span> 28% women.", "i3": "Analysis of 418 <em>opinion makers</em> across TV, Press and Radio", "i4": "Scroll", "i5": "The database excludes sports commentators, whose clear male skew would overwhelm the purpose of this site.", "i6": "<span class=\"num-tag\">01</span><span>The portrait</span><span class=\"line\"></span>", "i7": "The numbers <em>of the imbalance.</em>", "i8": "      For every woman commenting in national media, there are more than two male voices. In certain spaces — the most visible, the most heard — there is none at all.", "i9": "Found an error or someone missing from the list? Help us make this portrait more accurate — write to <a href=\"mailto:imparidademedia@proton.me\">imparidademedia@proton.me</a>.", "i10": "  <!-- 02 - THE ABSENCE -->", "i11": "<span class=\"num-tag\">02</span><span>The absence</span><span class=\"line\"></span>", "i12": "In primetime", "i13": "News on a generalist channel", "i14": "women commenting <span class=\"reg\">regularly.</span>", "i15": "      These are the five men who occupy that space — the most-watched, the most influential, the one that sets the public conversation:", "i16": "And the women in primetime are", "i17": "None makes this list.", "i18": "On Sundays", "i19": "The weekend has its own pattern. Of the ten commentators who appear regularly on Sundays,", "i20": "men", "i21": "woman", "i22": "<span class=\"num-tag\">03</span><span>By medium</span><span class=\"line\"></span>", "i23": "What is <em>seen,</em> what is <em>read,</em> what is <em>heard.</em>", "i24": "      Representation shifts depending on where you look. The press is the most balanced of the three media — though <strong>\"balanced\"</strong> still means a third women.", "i25": "<span class=\"sw sw-m\"></span>Men", "i26": "  <!-- 04 - BY OUTLET -->", "i27": "<span class=\"num-tag\">04</span><span>By outlet</span><span class=\"line\"></span>", "i28": "Not all <em>outlets</em> carry the same weight.", "i29": "      Fourteen outlets with at least ten commentators, from least to most balanced. Tap a card to see the names.", "i30": "Drag sideways to see more →", "i31": "<span class=\"ms-tag best\">Most balanced</span><span class=\"ms-name\">RTP N</span><span class=\"ms-pct\">32,0%</span>", "i32": "<span class=\"ms-tag worst\">Least balanced</span><span class=\"ms-name\">CNN</span><span class=\"ms-pct\">20,7%</span>", "i33": "Radio", "i34": "<span class=\"ms-tag best\">Most balanced</span><span class=\"ms-name\">Antena 1</span><span class=\"ms-pct\">33,3%</span>", "i35": "<span class=\"ms-tag worst\">Least balanced</span><span class=\"ms-name\">Rádio Observador</span><span class=\"ms-pct\">15,8%</span>", "i36": "Press", "i37": "<span class=\"ms-tag best\">Most balanced</span><span class=\"ms-name\">DN</span><span class=\"ms-pct\">37,7%</span>", "i38": "<span class=\"ms-tag worst\">Least balanced</span><span class=\"ms-name\">CM</span><span class=\"ms-pct\">18,2%</span>", "i39": "Only outlets with at least ten commentators.", "i40": "  <!-- 04b - BY TIME SLOT -->", "i41": "<span class=\"num-tag\">05</span><span>By time slot</span><span class=\"line\"></span>", "i42": "When there are <em>more women</em> in absolute terms, there are <em>fewer</em> in proportion.", "i43": "      Late-night primetime has more women in absolute numbers than the afternoon slot - but it's also the slot with the most commentators overall, and the female share doesn't keep pace with that growth. The pattern is consistent: the greater a slot's exposure, the greater the disproportion between men and women. In Primetime, the most-watched slot, that disproportion is absolute.", "i44": "Only commentators with a television presence.", "i45": "  <!-- 05 - BY FREQUENCY -->", "i46": "<span class=\"num-tag\">06</span><span>By frequency</span><span class=\"line\"></span>", "i47": "Parity <em>only reaches</em> those who appear <em>only occasionally.</em>", "i48": "      The more constant the media presence, the greater the imbalance. Among daily commentators, women are a residual minority. It's among those who appear only <strong>occasionally</strong> — the lowest rung of the scale — that the gap narrows the most.", "i49": "Maximum frequency recorded for each person across any of their media.", "i50": "<span class=\"num-tag\">07</span><span>The scale</span><span class=\"line\"></span>", "i51": "The scale <em>at the top.</em>", "i52": "      Each dot is a person. Further right = more aggregate exposure. Tap a dot to identify it.", "i53": "", "i54": "Top 10 — the most exposed", "i55": "<span class=\"num-tag\">08</span><span>As people</span><span class=\"line\"></span>", "i56": "The <em>418.</em>", "i57": "Full index. Filter, sort, search.", "i58": "", "i59": "Gender", "i60": "Medium", "i61": "Press", "i62": "Radio", "i63": "", "i64": "Score (highest)", "i65": "Score (lowest)", "i66": "Name A→Z", "i67": "Name Z→A", "i68": "Show more", "i69": "Methodology.", "i70": "What is measured", "i71": "This survey tracks <strong>opinion makers</strong> - commentators, analysts and columnists with a regular presence on Portuguese TV, in the press, or on the radio. The database includes people who have published or appeared in the media space at least 3 times in the last six months. Before any score, what matters is the simple count: <strong>how many are men and how many are women</strong>. It is that absolute imparity - who has a voice and who does not - that this project wants to show.", "i72": "The exposure score is secondary. It only serves to give a sense of intensity within that imbalance. Speaking once a month is not the same as speaking twice a week; commenting on a Sunday night, in primetime, is not the same as commenting on a Wednesday afternoon. Capturing that difference without reducing everything to a count of appearances required decisions about weighting and hierarchy, which are by far the most debatable part of this methodology. The score helps convey gradation. It does not replace the count of men and women, which remains the central figure.", "i73": "How the score is calculated", "i74": "For each medium a person appears in, three factors are multiplied: the <strong>channel weight</strong> (generalist TV=11, cable TV=10, press=6, radio=3, reflecting approximate audience and reach), the <strong>time-slot weight</strong> where applicable to TV (primetime=5, late-night primetime=3, afternoon primetime=2, with a +5 bonus if the show airs on a Sunday), and the <strong>frequency multiplier</strong> (from daily=5 to occasional=0.25). The three components - TV, press, radio - are summed and the result is rescaled to a 0-20 range.", "i75": "The value 20 is a <strong>theoretical ceiling</strong>. No one reaches it in practice: it would correspond to someone present simultaneously on generalist TV, in Sunday primetime, every single day, plus in the press every day and on the radio every day. The highest score in the survey is 11.19 - just over half that ceiling. Real scores cluster at the low end of the scale because maximum simultaneous exposure across all three media, every day, is an extreme scenario that practically does not exist.", "i76": "The formula is a deliberate simplification. It does not distinguish a commentator with 2 minutes of airtime from another with 20 on the same show, nor does it capture the real audience of each slot beyond the generic categories used here. It is a structural proxy, not a direct measure of audience or impact, and should be read accordingly: an indicator of relative intensity, not absolute truth.", "i77": "How the data is collected", "i78": "The data is curated manually, based on direct and ongoing observation of the schedules of the main Portuguese TV channels, newspapers and radio stations. There is no structured public source - an API, a register kept by the regulator (ERC) - that lists fixed commentators by programme. This database was built from watching, reading and manual logging, which brings three limitations:", "i79": "<strong>Incomplete coverage.</strong> It covers the channels and outlets with the largest audiences, not every outlet that exists in Portugal. Commentators present in regional, local, or smaller digital outlets are not included.", "i80": "<strong>Time lag.</strong> Schedules change - contracts end, shows get cancelled, new panellists join. The data reflects an approximate portrait of a recent period, not a real-time snapshot.", "i81": "<strong>Human error.</strong> Classifying the time slot, frequency and channel of hundreds of people is a process prone to logging errors, memory lapses, or differences in how criteria are interpreted.", "i82": "What we are not trying to resolve", "i83": "Some classification decisions are inevitably discretionary, and we own that plainly:", "i84": "The line between a \"fixed commentator\" and a \"frequent guest\" is not always sharp. We used the criterion of recurring, identifiable presence, not a formal contract we have no way to verify.", "i85": "Gender was assigned based on each person's known public presentation, without direct contact to confirm it in every case.", "i86": "Hybrid-format shows - interview, comedy, talk-show - were classified by their dominant current-affairs commentary component. For example, comedy and entertainment were separated from the news/primetime political-opinion category, to avoid distorting analyses of news commentary.", "i87": "Why we publish this anyway", "i88": "No survey of this kind is perfect, neither this one nor any alternative that relies on human observation instead of data the stations themselves don't publish. Even so, an approximate, honest portrait that's upfront about its own limits is more useful than no portrait at all. The gender asymmetry this data reveals is too large to be explained away by classification error margins.", "i89": "This database is open to corrections. Found an error, an omission, or someone who should be here but isn't? We'd appreciate hearing from you - see the box below.", "i90": "This database is alive.", "i91": "Found an error or someone missing from the list? Help us make this portrait more accurate - write to <a href=\"mailto:imparidademedia@proton.me\">imparidademedia@proton.me</a>.", "i92": "This project is only possible thanks to AI. Developed together with Claude.", "i93": "This database is alive.", "i94": "All", "topmark": "<span class=\"dot\"></span>On air", "hero-eyebrow": "A portrait · Portugal · 2026", "hero-tagline": "What gender equity exists among opinion makers in Portuguese media? <em>A database in progress.</em>", "hero-bigstat": "<span class=\"accent\">72%</span> <span class=\"hl-red\">men.</span> 28% women.\n        <span class=\"small\">Analysis of 418 <em>opinion makers</em> across TV, Press and Radio</span>", "i95": "Men", "i96": "Women", "i97": "TV"};
+
+function captureOriginalPT() {
+  if (I18N_PT_CAPTURED) return;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    I18N_PT[el.getAttribute('data-i18n')] = el.innerHTML;
+  });
+  I18N_PT_CAPTURED = true;
+}
+
+function applyStaticI18N(lang) {
+  captureOriginalPT();
+  document.documentElement.lang = lang;
+  document.title = STR[lang].title;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    var val = lang === 'en' ? I18N_EN[key] : I18N_PT[key];
+    if (val !== undefined) el.innerHTML = val;
+  });
+  var searchEl = document.getElementById('search');
+  if (searchEl) {
+    searchEl.placeholder = lang === 'en' ? 'Search name or outlet…' : 'Procurar nome ou órgão…';
+    searchEl.setAttribute('aria-label', lang === 'en' ? 'Search' : 'Procurar');
+  }
+  var sortEl = document.getElementById('sort');
+  if (sortEl) sortEl.setAttribute('aria-label', lang === 'en' ? 'Sort' : 'Ordenar');
+  var stripEl = document.getElementById('strip');
+  if (stripEl) stripEl.setAttribute('aria-label', lang === 'en' ? 'Distribution of exposure scores' : 'Distribuição de scores de exposição');
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+}
+
+function setLang(lang) {
+  LANG = lang;
+  try { localStorage.setItem('imparidade_lang', lang); } catch(e) {}
+  applyStaticI18N(lang);
+  var selCard = document.getElementById('sel-card');
+  if (selCard) selCard.classList.remove('show');
+  document.querySelectorAll('.dot.selected').forEach(function(d){ d.classList.remove('selected'); });
+  window.__i18nRenderers.forEach(function(fn) { try { fn(); } catch(e) { console.error(e); } });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var lang = btn.getAttribute('data-lang');
+      if (lang !== LANG) setLang(lang);
+    });
+  });
+});
+
 const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N","te":"Horário nobre entretenimento","tf":"Bi-semanal","im":"Expresso","if":"Bi-semanal","rd":"","rf":""},{"n":"Nuno Rogeiro","g":"M","s":10.99,"tv":"SIC, SIC N","te":"Primetime","tf":"Bi-semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Paulo Portas","g":"M","s":7.39,"tv":"TVI","te":"Primetime","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Milhazes","g":"M","s":7.06,"tv":"SIC, SIC N","te":"Primetime","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Pacheco Pereira","g":"M","s":5.78,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Alexandra Leitão","g":"F","s":5.78,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"João Cotrim de Figueiredo","g":"M","s":5.38,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Braga de Carvalho","g":"M","s":5.38,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Duarte","g":"M","s":5.38,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Gomes Ferreira","g":"M","s":5.29,"tv":"SIC, SIC N","te":"Primetime","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Afonso Moura","g":"M","s":5.04,"tv":"Now","te":"Horário nobre noite","tf":"Diária","im":"","if":"","rd":"","rf":""},{"n":"Rui Calafate","g":"M","s":4.03,"tv":"CNN","te":"Horário nobre noite","tf":"3x por semana","im":"","if":"","rd":"","rf":""},{"n":"Diana Soller","g":"F","s":4.03,"tv":"CNN","te":"Horário nobre noite","tf":"3x por semana","im":"","if":"","rd":"","rf":""},{"n":"Agostinho Costa","g":"M","s":4.03,"tv":"CNN","te":"Horário nobre noite","tf":"3x por semana","im":"","if":"","rd":"","rf":""},{"n":"Miguel Sousa Tavares","g":"M","s":3.9,"tv":"TVI","te":"Primetime","tf":"Semanal","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Sérgio Sousa Pinto","g":"M","s":3.63,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"Expresso","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Helena Matos","g":"F","s":3.63,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Maria Castello Branco","g":"F","s":3.63,"tv":"RTP N","te":"Horário nobre noite","tf":"Bi-semanal","im":"Expresso","if":"Semanal","rd":"Antena 1","rf":"Semanal"},{"n":"Miguel Morgado","g":"M","s":3.63,"tv":"SIC N","te":"Horário nobre noite","tf":"Bi-semanal","im":"Observador","if":"Bi-semanal","rd":"","rf":""},{"n":"Margarida Davim","g":"F","s":3.63,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"Visão","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Manuel Serrano","g":"M","s":3.43,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"CNN Portugal","if":"Semanal","rd":"","rf":""},{"n":"Germano Almeida","g":"M","s":3.43,"tv":"Now","te":"Horário nobre noite","tf":"Bi-semanal","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Daniel Oliveira","g":"M","s":3.13,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Bi-semanal","rd":"TSF","rf":"Diária"},{"n":"Anselmo Crespo","g":"M","s":3.09,"tv":"CNN","te":"Horário nobre tarde","tf":"3x por semana","im":"CNN Portugal","if":"Semanal","rd":"","rf":""},{"n":"Miguel Relvas","g":"M","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Mafalda Anjos","g":"F","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Azeredo Lopes","g":"M","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Tiago André Lopes","g":"M","s":3.03,"tv":"CNN","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Irineu Teixeira","g":"F","s":3.03,"tv":"Now","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"Rui Pereira","g":"M","s":3.03,"tv":"CMTV","te":"Horário nobre noite","tf":"Bi-semanal","im":"","if":"","rd":"","rf":""},{"n":"João Miguel Tavares","g":"M","s":2.82,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Bi-semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Paulo Sande","g":"M","s":2.69,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Susana Peralta","g":"F","s":2.62,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Pedro Marques Lopes","g":"M","s":2.62,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso, Visão","if":"Bi-semanal","rd":"","rf":""},{"n":"Miguel Santos Carrapatoso","g":"M","s":2.52,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"Observador","if":"Quinzenal","rd":"Rádio Observador","rf":"Bi-semanal"},{"n":"Ricardo Paes Mamede","g":"M","s":2.42,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Clara Ferreira Alves","g":"F","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Luís Pedro Nunes","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Paulo Baldaia","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Pedro Mexia","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Francisco Mendes da Silva","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Bárbara Pedrosa","g":"F","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Henrique Raposo","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Filipe Luís","g":"M","s":2.42,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"Visão","if":"Semanal","rd":"","rf":""},{"n":"Maria João Marques","g":"F","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Américo Aguiar","g":"M","s":2.42,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Miguel Monjardino","g":"M","s":2.42,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Isabel Mendes Lopes","g":"F","s":2.22,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Fernando Medina","g":"M","s":2.22,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"RR","rf":"Semanal"},{"n":"Mário Centeno","g":"M","s":2.22,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Isidro Morais Morais Pereira","g":"M","s":2.07,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"CM","if":"Pontual","rd":"","rf":""},{"n":"António Vitorino","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Joana Marques Brás","g":"F","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Henrique Pinto de Mesquita","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Brinca","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Bernardo Ferrão","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Santana Lopes","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Isaltino Morais","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Luís Paixão Martins","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Carlos Moedas","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Pinto","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Hugo Carneiro","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"António Mendonça Mendes","g":"M","s":2.02,"tv":"RTP N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Delgado Alves","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"José Eduardo Martins","g":"M","s":2.02,"tv":"SIC N","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Bernardo Valente","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Alberto Cunha","g":"M","s":2.02,"tv":"CNN","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Rita Matias","g":"F","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Bruno Gonçalves","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Arnaut Moreira","g":"M","s":2.02,"tv":"Now","te":"Horário nobre noite","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Rui Pedro Antunes","g":"M","s":1.92,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Diária"},{"n":"Pedro Adão e Silva","g":"M","s":1.82,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"Público","if":"3x por semana","rd":"","rf":""},{"n":"Teresa Nogueira Pinto","g":"F","s":1.61,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"Expresso","if":"Semanal","rd":"Antena 1","rf":"Semanal"},{"n":"João Maria Jonet","g":"M","s":1.55,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Pedro Gomes Sanches","g":"M","s":1.41,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Patrícia de Carvalho","g":"F","s":1.41,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Bernardo Ivo Cruz","g":"M","s":1.41,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Pedro Santos Guerreiro","g":"M","s":1.34,"tv":"CNN","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Cecília Meireles","g":"F","s":1.34,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Prata Roque","g":"M","s":1.34,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Ana Cavalieri","g":"F","s":1.34,"tv":"SIC N","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Camilo Lourenço","g":"M","s":1.34,"tv":"CMTV","te":"Horário nobre tarde","tf":"Semanal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Poiares Maduro","g":"M","s":1.31,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"Expresso","if":"Mensal","rd":"RR","rf":"Semanal"},{"n":"Helena Pereira","g":"F","s":1.26,"tv":"RTP N","te":"Horário nobre noite","tf":"Pontual","im":"Público","if":"Diária","rd":"","rf":""},{"n":"Martim Avillez Figueiredo","g":"M","s":1.21,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Ana Augusto-Pedroso","g":"F","s":1.21,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Filipe Vasconcelos Romão","g":"M","s":1.21,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Ana Fontoura Goveia","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rodrigo Moita de Deus","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ana Gabriela Cavilhas","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Alexandre Poço","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Bárbara do Amaral Correia","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Bruno Dias","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Fátima Fonseca","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Francisco César","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Mário Amorim Lopes","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Marina Gonçalves","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Cabrita","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Miguel Corte Real","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Patrícia Gonçalves","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ricardo Carvalho","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rodrigo Taxa","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rui Paulo Sousa","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"José Maria Pimentel","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rita Rato","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Francisco Rodrigues dos Santos","g":"M","s":1.01,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Jorge Botelho Moniz","g":"M","s":1.01,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Luís Osório","g":"M","s":1.01,"tv":"","te":"","tf":"","im":"DN","if":"Diária","rd":"","rf":""},{"n":"Paulo Pedroso","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"António Gonçalves Alexandre","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Daniel Pinéu","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Rui Cardoso","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Marco Serronha","g":"M","s":1.01,"tv":"CNN","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ana Sá Lopes","g":"F","s":1.01,"tv":"","te":"","tf":"","im":"Público","if":"Diária","rd":"","rf":""},{"n":"Francisco Goiana da Silva","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Filipa Raimundo","g":"F","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Ricardo Jorge Pinto","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Filipe Grilo","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"João Vieira Borges","g":"M","s":1.01,"tv":"RTP N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Helena Ferro Gouveia","g":"F","s":1.01,"tv":"CMTV","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"João Ramos de Almeida","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Diogo Feio","g":"M","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Maria João Tomás","g":"F","s":1.01,"tv":"SIC N","te":"Horário nobre noite","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Alberto Gonçalves","g":"M","s":0.91,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Diária"},{"n":"Eduardo Sá","g":"M","s":0.91,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Diária"},{"n":"Manuel Carvalho","g":"M","s":0.91,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"José Manuel Fernandes","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"3x por semana"},{"n":"Miguel Pinheiro","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"3x por semana"},{"n":"Leonídio Paulo Ferreira","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"DN","if":"3x por semana","rd":"","rf":""},{"n":"Pedro Sousa Carvalho","g":"M","s":0.81,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"Antena 1","rf":"Bi-semanal"},{"n":"Luísa Jeremias","g":"F","s":0.81,"tv":"","te":"","tf":"","im":"CM","if":"3x por semana","rd":"","rf":""},{"n":"Eduardo Cintra Torres","g":"M","s":0.81,"tv":"","te":"","tf":"","im":"CM","if":"3x por semana","rd":"","rf":""},{"n":"Filipe Santos Costa","g":"M","s":0.77,"tv":"CNN","te":"Horário nobre tarde","tf":"Quinzenal","im":"CNN Portugal","if":"Mensal","rd":"","rf":""},{"n":"Ricardo Costa","g":"M","s":0.76,"tv":"SIC, SIC N","te":"Horário nobre tarde","tf":"Mensal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Adriana Cardoso","g":"F","s":0.74,"tv":"SIC N","te":"Horário nobre tarde","tf":"Mensal","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Helena Garrido","g":"F","s":0.71,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Bi-semanal"},{"n":"Sónia Sénica","g":"M","s":0.67,"tv":"CNN","te":"Horário nobre tarde","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"Luís Ribeiro","g":"M","s":0.67,"tv":"SIC N","te":"Horário nobre tarde","tf":"Quinzenal","im":"","if":"","rd":"","rf":""},{"n":"João Marques de Almeida","g":"M","s":0.66,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Ascenso Simões","g":"M","s":0.66,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Maria João Avillez","g":"F","s":0.66,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Luís Aguiar-Conraria","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Jaime Nogueira Pinto","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Antena 1","rf":"Semanal"},{"n":"Inês Cardoso","g":"F","s":0.61,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Bruno Cardoso Reis","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Afonso Reis Cabral","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"João Oliveira","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"TSF","rf":"Semanal"},{"n":"Filipe Alves","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"DN","if":"Bi-semanal","rd":"","rf":""},{"n":"Tânia Laranjo","g":"F","s":0.61,"tv":"","te":"","tf":"","im":"CM","if":"Bi-semanal","rd":"","rf":""},{"n":"Luís Campos Ferreira","g":"M","s":0.61,"tv":"","te":"","tf":"","im":"CM","if":"Bi-semanal","rd":"","rf":""},{"n":"Paula Caeiro Varela","g":"F","s":0.57,"tv":"SIC N","te":"Horário nobre tarde","tf":"Pontual","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Ângela Silva","g":"F","s":0.55,"tv":"SIC N","te":"Horário nobre noite","tf":"Mensal","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Seixas da Costa","g":"M","s":0.5,"tv":"CNN","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Pedro Tadeu","g":"M","s":0.5,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Diária"},{"n":"António José Telo","g":"M","s":0.5,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Nuno Artur Silva","g":"M","s":0.5,"tv":"RTP N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Joana Amaral Dias","g":"F","s":0.5,"tv":"Now","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Raquel Vaz Pinto","g":"F","s":0.5,"tv":"SIC N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Lígia Franco","g":"F","s":0.5,"tv":"SIC N","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Daniela Melo","g":"F","s":0.5,"tv":"CNN","te":"Horário nobre noite","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Mariana Vieira da Silva","g":"F","s":0.45,"tv":"Now","te":"Horário nobre noite","tf":"Pontual","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"João Pereira Coutinho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Fernanda Câncio","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Jorge Fernandes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"Rádio Observador","rf":"Semanal"},{"n":"Tiago Dores","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Ana Cristina Leonardo","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Rita Bessa","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Stilwell","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"António Barreto","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"António Guerreiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Carmen Garcia","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Francisco Teixeira da Mota","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Frei Bento Domingues O.P.","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Inês Meneses","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Isabel Stilwell","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"José Manuel Meirim","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Pedro Norton","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Luís  Castro Mendes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Francisco George","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Guilherme d’Oliveira Martins","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Aline Hall de Beuvink","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Ana Miguel dos Santos","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Margarida Vaqueiro Lopes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Mariana Leitão","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Rita Garcia Pereira","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Jorge Costa Oliveira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Jorge Silva Carvalho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Rute Agulhas","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Raúl M. Braga Pires","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Luís Newton","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Manuel Cardoso","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Rodrigo G. de Carvalho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Isabel Figueiredo","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"João Massano","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso, CM","if":"Semanal","rd":"","rf":""},{"n":"Guta Moura Guedes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Eugénia Galvão Teles","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Henrique Burnay","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Henrique Monteiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Leonor Rosas","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Ricardo Dias Felner","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"José Gameiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"João Silvestre","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Lourenço Pereira Coutinho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Luís Marques","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Ricardo Reis","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Rodrigo Saraiva","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Teresa Violante","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Alexandre Borges","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"André Abrantes Amaral","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"José Diogo Quintela","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Margarida Bentes Penedo","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Miguel Tamen","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Nuno Gonçalo Poças","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"P. Gonçalo Portocarrero de Almada","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Patrícia Fernandes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"Rodrigo Adão da Fonseca","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Observador","if":"Semanal","rd":"","rf":""},{"n":"António Tavares","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Capicua","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Felisbela Lopes","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Filinto Lima","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Francisco Porto Fernandes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Gomes Fernandes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Helder Pacheco","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Joana Almeida Silva","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Joaquim Cunha","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Joel Neto","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"José Gomes Mendes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Manuel Carvalho da Silva","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Manuel Molinos","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Margarida Rebelo Pinto","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Maria Cândida Almeida","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Maria de Lurdes Rodrigues","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Miguel Guedes","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Paula Teles","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Pedro Ivo Carvalho","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Rafael Barbosa","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Susana Romana","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Valter Hugo Mãe","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"JN","if":"Semanal","rd":"","rf":""},{"n":"Amilcar Correia","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"Público","if":"Semanal","rd":"","rf":""},{"n":"Ana Rita Gil","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"António Jaime Martins","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"João Almeida Moreira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"João Caupers","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Luís Parreirão","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Luís Vidigal","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Miguel Romão","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Paulo Guinote","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Wang Suoying","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Semanal","rd":"","rf":""},{"n":"Paula Marques","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"TSF","rf":"Semanal"},{"n":"Eunice Lourenço","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"Expresso","if":"Semanal","rd":"","rf":""},{"n":"Manuel Maria Rodrigues","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Fernanda Cachão","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Francisco José Viegas","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Ricardo Rio","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Carlos Fiolhais","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Armando Esteves Pereira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"António Silva Ribeiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Luís Tomé","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Luciano Amaral","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Sérgio A. Vitorino","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Reginaldo Rodrigues de Almeida","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Paulo de Morais","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Octávio Ribeiro","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Marcos Perestrello","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"António Fontes Ramos","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"João Pedro Ferreira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Victor Bandarra","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"José Jorge Letria","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"João Cortesão","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Nuno Domingos","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Eduardo Caetano Sousa","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"João Vaz","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Francisco Moita Flores","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Carlos Anjos","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Regina Soares","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Isabel Ferreira","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"César Nogueira","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Sónia Dias","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Rui Zink","g":"M","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"Ana Isabel Fonseca","g":"F","s":0.4,"tv":"","te":"","tf":"","im":"CM","if":"Semanal","rd":"","rf":""},{"n":"José Pedro Teixeira Fernandes","g":"M","s":0.37,"tv":"RTP N","te":"Horário nobre tarde","tf":"Pontual","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Gonçalo Ribeiro Telles","g":"M","s":0.34,"tv":"CNN","te":"Horário nobre tarde","tf":"Mensal","im":"","if":"","rd":"","rf":""},{"n":"Luís Rosa","g":"M","s":0.3,"tv":"","te":"","tf":"","im":"Observador","if":"Mensal","rd":"Rádio Observador","rf":"Semanal"},{"n":"André Coelho Lima","g":"M","s":0.25,"tv":"Now","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Marcos Farias Ferreira","g":"M","s":0.25,"tv":"RTP N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Liliana Valente","g":"F","s":0.25,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"João Nuno Assunção","g":"M","s":0.25,"tv":"SIC N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Joana Ricarte","g":"F","s":0.25,"tv":"RTP N","te":"Horário nobre noite","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Ricardo Arroja","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Vítor Santos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"André Barata","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Carla Castro","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"João da Silva","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Luísa Semedo","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Manuel Loff","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"Pedro Bastos Reis","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"André Franqueira Rodrigues","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Diogo Noivo","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Ana Miguel Pedro","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"António Carlos Cortez","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Rui Frias","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Sofia Santos","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Carlos Ferro","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Filipe Froes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Nuno Piteira Lopes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Nuno Vinha","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Bruno Valverde Cota","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"DN","if":"Quinzenal","rd":"","rf":""},{"n":"Vitor Matos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Luís Cabral","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Rodrigo Tavares","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Sebastião Bugalho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Expresso","if":"Quinzenal","rd":"","rf":""},{"n":"Carlos Maria Bobone","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"","rf":""},{"n":"Mafalda Pratas","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"","rf":""},{"n":"Paulo Trigo Pereira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Observador","if":"Quinzenal","rd":"","rf":""},{"n":"José A. Rio Fernandes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Luís Pedro Carvalho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Mariana Roque Caetano","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Nuno Botelho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Pedro Araújo","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Rogério Macedo Oliveira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Rui Lage","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Rui Sá","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"Sérgio Humberto","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"JN","if":"Quinzenal","rd":"","rf":""},{"n":"André Silva","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"António José Teixeira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Carlos Coelho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Francisco Merino","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Francisco Paupério","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"João Teixeira Lopes","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Kenia Nunes","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Luísa Meireles","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Marisa Matias","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Miguel Tiago","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Paula Teixeira da Cruz","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Álvaro Costa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Nuno Magalhães","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Tiago Brandão Rodrigues","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Miguel Carvalho","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Joana Bértholo","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"Pedro Levi Bismarck","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"David Erlich","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Antena 1","rf":"Semanal"},{"n":"José Pedro Silva","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Maria Escaja","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"José Ribeiro e Castro","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"João Soares","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Pedro Mota Soares","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Ribau Esteves","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Inês de Medeiros","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Angélique da Teresa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Bernardo Pessanha","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"José Manuel Pureza","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Teresa Leal Coelho","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Lídia Pereira","g":"F","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Manuel Monteiro","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"TSF","rf":"Semanal"},{"n":"Nuno Garoupa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Semanal"},{"n":"Rui Ramos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Semanal"},{"n":"Gonçalo Sousa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Semanal"},{"n":"Nuno Severiano Teixeira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"Público","if":"Quinzenal","rd":"","rf":""},{"n":"José Feliciano Costa","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"CM","if":"Quinzenal","rd":"","rf":""},{"n":"Acácio Pereira","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"CM","if":"Quinzenal","rd":"","rf":""},{"n":"Ricardo Ramos","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"CM","if":"Quinzenal","rd":"","rf":""},{"n":"António Sousa Homem","g":"M","s":0.2,"tv":"","te":"","tf":"","im":"CM","if":"Quinzenal","rd":"","rf":""},{"n":"Pedro Frazão","g":"M","s":0.17,"tv":"CNN","te":"Horário nobre tarde","tf":"Pontual","im":"","if":"","rd":"","rf":""},{"n":"Inês Ferreira Leite","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ricardo Simões Ferreira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"José Manuel Maia","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Jorge Mangorrinha","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ivone Patrão","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Arlindo Oliveira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Giovanna Tavares","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Pedro Carvalho","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Tiago Correia","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Ubiratan Muarrek","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Público","if":"Mensal","rd":"","rf":""},{"n":"Pedro Sequeira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ana Jacinto","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Ana Abrunhosa","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Rita Alves Feio","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"DN","if":"Mensal","rd":"","rf":""},{"n":"Domingos Caeiro","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Luís Mira Amaral","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Luís Todo Bom","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Luísa Schmidt","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Maria Manuel Mota","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"Alfredo Pereira da Cruz","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"Expresso","if":"Mensal","rd":"","rf":""},{"n":"António Sousa Pereira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Carlos Carvalho","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Emídio Gomes","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Fontainhas Fernandes","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"José Ribau Esteves","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Luísa Salgueiro","g":"F","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Luís Nobre","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Mário Passos","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Paulo Jorge Ferreira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Paulo Pereira","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Ricardo Araújo","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"Rui Amaral","g":"M","s":0.1,"tv":"","te":"","tf":"","im":"JN","if":"Mensal","rd":"","rf":""},{"n":"José Crespo de Carvalho","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"DN","if":"Pontual","rd":"","rf":""},{"n":"Maria Manuel Leitão Marques","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"DN","if":"Pontual","rd":"","rf":""},{"n":"Alexandra Lucas Coelho","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"Antônio Grassi","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"Elizabeth Accioly","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"Ionara Silva","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Público","if":"Pontual","rd":"","rf":""},{"n":"José Soeiro","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Carla Joana Silva","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"JN","if":"Pontual","rd":"","rf":""},{"n":"Fernando Calado Rodrigues","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"JN","if":"Pontual","rd":"","rf":""},{"n":"Maria Inês Padrão","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"JN","if":"Pontual","rd":"","rf":""},{"n":"Duarte Afonso Silva","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Mensal"},{"n":"José Luís Ramos Pinheiro","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Mensal"},{"n":"Pedro Vaz Patto","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Mensal"},{"n":"Paulo Saragoça da Mata","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"","if":"","rd":"Rádio Observador","rf":"Mensal"},{"n":"Hugo Carvalho Gonçalves","g":"M","s":0.05,"tv":"","te":"","tf":"","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Cláudia Lucas Cheu","g":"F","s":0.05,"tv":"","te":"","tf":"","im":"Expresso","if":"Pontual","rd":"","rf":""},{"n":"Alfredo Teixeira","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Francisco Sarsfield Cabral","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"João Pedro Tavares","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Luís Caeiro","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Pedro Celeste","g":"M","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Rute Xavier","g":"F","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"},{"n":"Tânia Sousa","g":"F","s":0.03,"tv":"","te":"","tf":"","im":"","if":"","rd":"RR","rf":"Pontual"}];
 
 (function() {
@@ -1096,12 +1212,14 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
   const top10sorted = [...DATA].sort((a,b) => b.s - a.s).slice(0, 10);
   const top10F = top10sorted.filter(d => d.g === 'F').length;
 
-  $('stats').innerHTML = [
-    { lbl: 'Opinion makers ativos', num: '<span class="num-display">' + tot + '</span>', sub: m + ' homens · ' + f + ' mulheres' },
-    { lbl: 'Rácio H / M', num: '<span class="num-display">' + (m/f).toFixed(1) + '<span class="pct">×</span></span>', sub: 'mais homens do que mulheres' },
-    { lbl: 'Primetime de TV', num: '<span class="num-display">0</span>', sub: 'mulheres em horário nobre', alarm: true },
-    { lbl: 'Top 10 do score', num: '<span class="num-display">' + (10-top10F) + '<span class="sep">/</span>' + top10F + '</span>', sub: 'homens / mulheres no topo' },
-  ].map(k => '<div class="stat-card' + (k.alarm ? ' alarm' : '') + '"><div class="lbl">' + k.lbl + '</div>' + k.num + '<div class="sub">' + k.sub + '</div></div>').join('');
+  function renderStats() {
+    $('stats').innerHTML = [
+      { lbl: T('activeLbl'), num: '<span class="num-display">' + tot + '</span>', sub: m + ' ' + T('men') + ' · ' + f + ' ' + T('women') },
+      { lbl: T('ratioLbl'), num: '<span class="num-display">' + (m/f).toFixed(1) + '<span class="pct">×</span></span>', sub: T('ratioSub') },
+      { lbl: T('primetimeLbl'), num: '<span class="num-display">0</span>', sub: T('primetimeSub'), alarm: true },
+      { lbl: T('top10Lbl'), num: '<span class="num-display">' + (10-top10F) + '<span class="sep">/</span>' + top10F + '</span>', sub: T('top10Sub') },
+    ].map(k => '<div class="stat-card' + (k.alarm ? ' alarm' : '') + '"><div class="lbl">' + k.lbl + '</div>' + k.num + '<div class="sub">' + k.sub + '</div></div>').join('');
+  }
 
   // === Vertical bar chart helper ===
   function renderVBar(rootId, cats) {
@@ -1122,33 +1240,46 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
     labels.innerHTML = cats.map(c => '<div class="vbar-label">' + c.label + (c.sublabel ? '<span class="vbar-sublabel">' + c.sublabel + '</span>' : '') + '</div>').join('');
   }
 
-  // === 03 Por meio ===
-  renderVBar('chart-meio', [
-    { label: 'Televisão', m: DATA.filter(d => d.g==='M' && d.tv).length, f: DATA.filter(d => d.g==='F' && d.tv).length },
-    { label: 'Imprensa',  m: DATA.filter(d => d.g==='M' && d.im).length, f: DATA.filter(d => d.g==='F' && d.im).length },
-    { label: 'Rádio',     m: DATA.filter(d => d.g==='M' && d.rd).length, f: DATA.filter(d => d.g==='F' && d.rd).length },
-  ]);
+  function renderMeioChart() {
+    renderVBar('chart-meio', [
+      { label: T('vTelevisao'), m: DATA.filter(d => d.g==='M' && d.tv).length, f: DATA.filter(d => d.g==='F' && d.tv).length },
+      { label: T('vImprensa'),  m: DATA.filter(d => d.g==='M' && d.im).length, f: DATA.filter(d => d.g==='F' && d.im).length },
+      { label: T('vRadio'),     m: DATA.filter(d => d.g==='M' && d.rd).length, f: DATA.filter(d => d.g==='F' && d.rd).length },
+    ]);
+  }
 
-  // === 04 Por horário (TV only) ===
-  renderVBar('chart-horario', [
-    { label: 'Tarde',     sublabel: '18h30–20h',  m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre tarde').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre tarde').length },
-    { label: 'Primetime Generalista', sublabel: '20h–21h30',  m: DATA.filter(d => d.g==='M' && d.te==='Primetime').length, f: DATA.filter(d => d.g==='F' && d.te==='Primetime').length },
-    { label: 'Noite',     sublabel: '21h–00h',    m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre noite').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre noite').length },
-  ]);
+  function renderHorarioChart() {
+    renderVBar('chart-horario', [
+      { label: T('vTarde'),     sublabel: '18h30–20h',  m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre tarde').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre tarde').length },
+      { label: T('vPrimetimeG'), sublabel: '20h–21h30',  m: DATA.filter(d => d.g==='M' && d.te==='Primetime').length, f: DATA.filter(d => d.g==='F' && d.te==='Primetime').length },
+      { label: T('vNoite'),     sublabel: '21h–00h',    m: DATA.filter(d => d.g==='M' && d.te==='Horário nobre noite').length, f: DATA.filter(d => d.g==='F' && d.te==='Horário nobre noite').length },
+    ]);
+  }
 
   // === 05 Por frequência (max across media) ===
   const FREQ_RANK = ['Diária','3x por semana','Bi-semanal','Semanal','Quinzenal','Mensal','Pontual'];
-  const FREQ_LBL = ['Diária','3×/sem','Bi-sem.','Semanal','Quinzenal','Mensal','Pontual'];
   function maxFreq(d) {
     const fs = [d.tf, d["if"], d.rf];
     for (const f of FREQ_RANK) if (fs.includes(f)) return f;
     return null;
   }
-  renderVBar('chart-freq', FREQ_RANK.map((f, i) => ({
-    label: FREQ_LBL[i],
-    m: DATA.filter(d => d.g==='M' && maxFreq(d) === f).length,
-    f: DATA.filter(d => d.g==='F' && maxFreq(d) === f).length,
-  })));
+  function renderFreqChart() {
+    const FREQ_LBL = T('freqLbl');
+    renderVBar('chart-freq', FREQ_RANK.map((f, i) => ({
+      label: FREQ_LBL[i],
+      m: DATA.filter(d => d.g==='M' && maxFreq(d) === f).length,
+      f: DATA.filter(d => d.g==='F' && maxFreq(d) === f).length,
+    })));
+  }
+
+  function renderDerived() {
+    renderStats();
+    renderMeioChart();
+    renderHorarioChart();
+    renderFreqChart();
+    renderTop10();
+  }
+  window.__i18nRenderers.push(renderDerived);
 
   // === 06 Strip plot ===
   const strip = $('strip');
@@ -1169,9 +1300,9 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
 
   function meiosLabel(d) {
     const parts = [];
-    if (d.tv) parts.push('TV: ' + d.tv + (d.te ? ' · ' + d.te : '') + (d.tf ? ' · ' + d.tf : ''));
-    if (d.im) parts.push('Imprensa: ' + d.im + (d["if"] ? ' · ' + d["if"] : ''));
-    if (d.rd) parts.push('Rádio: ' + d.rd + (d.rf ? ' · ' + d.rf : ''));
+    if (d.tv) parts.push(T('tvPrefix') + ': ' + d.tv + (d.te ? ' · ' + trVal(d.te) : '') + (d.tf ? ' · ' + trVal(d.tf) : ''));
+    if (d.im) parts.push(T('imPrefix') + ': ' + d.im + (d["if"] ? ' · ' + trVal(d["if"]) : ''));
+    if (d.rd) parts.push(T('rdPrefix') + ': ' + d.rd + (d.rf ? ' · ' + trVal(d.rf) : ''));
     return parts.join('  ·  ');
   }
 
@@ -1181,7 +1312,7 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
     if (dot) {
       dot.classList.add('selected');
       const d = DATA[parseInt(dot.dataset.idx, 10)];
-      selCard.innerHTML = '<div class="sc-name">' + d.n + '</div><div class="sc-meta">' + (meiosLabel(d) || 'Sem meios registados') + '</div><div class="sc-score">' + d.s.toFixed(2) + '<span class="lbl">Score</span></div>';
+      selCard.innerHTML = '<div class="sc-name">' + d.n + '</div><div class="sc-meta">' + (meiosLabel(d) || T('noMedia')) + '</div><div class="sc-score">' + d.s.toFixed(2) + '<span class="lbl">Score</span></div>';
       selCard.classList.add('show');
     } else {
       selCard.classList.remove('show');
@@ -1189,9 +1320,11 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
   });
 
   // === Top 10 ===
-  $('top10').innerHTML = top10sorted.map((d, i) => {
-    return '<li><span class="idx">' + String(i+1).padStart(2,'0') + '</span><span class="nm">' + d.n + '</span><span class="gd gd-' + d.g.toLowerCase() + '">' + (d.g === 'M' ? 'H' : 'M') + '</span><span class="sc">' + d.s.toFixed(2) + '</span></li>';
-  }).join('');
+  function renderTop10() {
+    $('top10').innerHTML = top10sorted.map((d, i) => {
+      return '<li><span class="idx">' + String(i+1).padStart(2,'0') + '</span><span class="nm">' + d.n + '</span><span class="gd gd-' + d.g.toLowerCase() + '">' + (d.g === 'M' ? 'H' : 'M') + '</span><span class="sc">' + d.s.toFixed(2) + '</span></li>';
+    }).join('');
+  }
 
   // === Filters & people list ===
   let fG = '', fM = '', fS = '', fSort = 's-desc';
@@ -1243,9 +1376,9 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
   function render() {
     const rows = sortRows(filtered());
     const slice = rows.slice(0, visibleCount);
-    $('result-count').innerHTML = '<span class="num">' + rows.length + '</span>resultado' + (rows.length === 1 ? '' : 's');
+    $('result-count').innerHTML = '<span class="num">' + rows.length + '</span> ' + T('resultWord')(rows.length);
     if (rows.length === 0) {
-      entries.innerHTML = '<li class="empty">Nenhum resultado para esta combinação.</li>';
+      entries.innerHTML = '<li class="empty">' + T('noResults') + '</li>';
       loadMore.style.display = 'none';
       return;
     }
@@ -1256,18 +1389,19 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
         '<span class="e-idx">' + String(i+1).padStart(3,'0') + '</span>' +
         '<span class="e-name">' + d.n + '</span>' +
         '<span class="e-score">' + d.s.toFixed(2) + '</span>' +
-        '<span class="e-meta">' + (mL || 'Sem meios registados') + '</span>' +
+        '<span class="e-meta">' + (mL || T('noMedia')) + '</span>' +
         '<div class="e-bar ' + d.g.toLowerCase() + '"><div style="width:' + fillW + '%"></div></div>' +
       '</li>';
     }).join('');
     if (slice.length < rows.length) {
       loadMore.style.display = 'block';
-      loadMore.textContent = 'Mostrar mais (' + (rows.length - slice.length) + ' restantes)';
+      loadMore.textContent = T('showMore')(rows.length - slice.length);
     } else {
       loadMore.style.display = 'none';
     }
   }
   render();
+  window.__i18nRenderers.push(render);
 
   // (Reveal animations disabled)
   } catch (err) {
@@ -1310,23 +1444,23 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
         var namesM = d.names_m.map(function(n){ return '<li>' + n + '</li>'; }).join('');
         var namesF = d.n_f > 0
           ? d.names_f.map(function(n){ return '<li>' + n + '</li>'; }).join('')
-          : '<span class="ocs-no-women">Nenhuma mulher</span>';
+          : '<span class="ocs-no-women">' + T('ocsNoWomen') + '</span>';
         var detailClass = isOpen ? 'ocs-detail open' : 'ocs-detail';
         html += '<div class="ocs-row" data-key="' + key + '">'
           + '<div class="ocs-row-header">'
           + '<span class="ocs-row-idx">' + String(i+1).padStart(2,'0') + '</span>'
           + '<span class="ocs-row-name">' + d.ocs + '</span>'
-          + '<span class="ocs-row-meio">' + d.meio + '</span>'
+          + '<span class="ocs-row-meio">' + trMeio(d.meio) + '</span>'
           + '<div class="ocs-track"><div class="ocs-bar-m" style="width:' + mW + '%"></div><div class="ocs-bar-f" style="width:' + fW + '%"></div></div>'
           + '<span class="' + pctClass + '">' + pctTxt + '</span>'
           + '</div>'
           + '<div class="' + detailClass + '">'
           + '<div class="ocs-detail-cols">'
-          + '<div><div class="ocs-detail-head m">' + d.n_m + ' homens</div><ul class="ocs-names">' + namesM + '</ul></div>'
-          + '<div><div class="ocs-detail-head ' + (d.n_f > 0 ? 'f' : 'empty') + '">' + (d.n_f > 0 ? d.n_f + ' mulheres' : '0 mulheres') + '</div>' + (d.n_f > 0 ? '<ul class="ocs-names">' + namesF + '</ul>' : namesF) + '</div>'
+          + '<div><div class="ocs-detail-head m">' + d.n_m + ' ' + T('men') + '</div><ul class="ocs-names">' + namesM + '</ul></div>'
+          + '<div><div class="ocs-detail-head ' + (d.n_f > 0 ? 'f' : 'empty') + '">' + (d.n_f > 0 ? d.n_f + ' ' + T('women') : '0 ' + T('women')) + '</div>' + (d.n_f > 0 ? '<ul class="ocs-names">' + namesF + '</ul>' : namesF) + '</div>'
           + '</div>'
           + '<div style="font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:8px">'
-          + 'Total: ' + d.total + ' comentadores'
+          + T('ocsTotal')(d.total)
           + '</div>'
           + '</div>'
           + '</div>';
@@ -1360,6 +1494,7 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
     });
 
     render();
+    window.__i18nRenderers.push(render);
   })();
 
   // === ÓRGÃO CAROUSEL (chapter 04) ===
@@ -1374,12 +1509,12 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
       var mW = (o.n_m / o.total * 100).toFixed(1);
       var fW = (o.n_f / o.total * 100).toFixed(1);
       return '<div class="orgao-card' + (openKey === o.ocs ? ' open' : '') + '" data-key="' + o.ocs + '">'
-        + '<div class="orgao-card-meio">' + o.meio + '</div>'
+        + '<div class="orgao-card-meio">' + trMeio(o.meio) + '</div>'
         + '<div class="orgao-card-name">' + o.ocs + '</div>'
         + '<div class="' + pctClass + '">' + pctTxt + '<span class="sym">%</span></div>'
-        + '<div class="orgao-card-sub">mulheres</div>'
+        + '<div class="orgao-card-sub">' + T('orgaoSub') + '</div>'
         + '<div class="orgao-card-bar"><div class="orgao-card-bar-m" style="width:' + mW + '%"></div><div class="orgao-card-bar-f" style="width:' + fW + '%"></div></div>'
-        + '<div class="orgao-card-count"><span class="num">' + o.total + '</span> pessoas</div>'
+        + '<div class="orgao-card-count"><span class="num">' + o.total + '</span> ' + T('peopleWord') + '</div>'
         + '</div>';
     }
 
@@ -1387,15 +1522,15 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
       var namesM = o.names_m.map(function(n){ return '<li>' + n + '</li>'; }).join('');
       var namesF = o.n_f > 0
         ? o.names_f.map(function(n){ return '<li>' + n + '</li>'; }).join('')
-        : '<span class="orgao-no-women">Nenhuma mulher</span>';
+        : '<span class="orgao-no-women">' + T('orgaoNoWomen') + '</span>';
       var pctTxt = o.pct_f === 0 ? '0%' : o.pct_f.toFixed(1) + '%';
       return '<div class="orgao-detail-head">'
-        + '<span class="orgao-detail-title">' + o.ocs + '<span class="meio-tag">' + o.meio + ' · ' + o.total + ' pessoas</span></span>'
-        + '<span class="orgao-detail-pct">' + pctTxt + ' mulheres</span>'
+        + '<span class="orgao-detail-title">' + o.ocs + '<span class="meio-tag">' + trMeio(o.meio) + ' · ' + T('orgaoPeopleInline')(o.total) + '</span></span>'
+        + '<span class="orgao-detail-pct">' + pctTxt + ' ' + T('orgaoPctWomen') + '</span>'
         + '</div>'
         + '<div class="orgao-detail-cols">'
-        + '<div><div class="orgao-detail-col-lbl m">Homens (' + o.n_m + ')</div><ul class="orgao-detail-names">' + namesM + '</ul></div>'
-        + '<div><div class="orgao-detail-col-lbl f">Mulheres (' + o.n_f + ')</div><ul class="orgao-detail-names">' + namesF + '</ul></div>'
+        + '<div><div class="orgao-detail-col-lbl m">' + T('orgaoMen')(o.n_m) + '</div><ul class="orgao-detail-names">' + namesM + '</ul></div>'
+        + '<div><div class="orgao-detail-col-lbl f">' + T('orgaoWomen')(o.n_f) + '</div><ul class="orgao-detail-names">' + namesF + '</ul></div>'
         + '</div>';
     }
 
@@ -1428,7 +1563,10 @@ const DATA = [{"n":"Ricardo Araújo Pereira","g":"M","s":11.19,"tv":"SIC, SIC N"
     }
 
     render();
+    window.__i18nRenderers.push(render);
   })();
+
+  setLang(LANG);
 
 </script>
 </body>
